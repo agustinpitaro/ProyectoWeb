@@ -1,1 +1,35 @@
-# Empty CSS file for your own CSS
+
+.logo{
+    width: 90%;
+    height: 90%;
+}
+.cuerpo{
+    color:turquoise;
+    background-color: rgb(26, 25, 25);
+   
+}
+.linknavegacion{
+    color:turquoise;
+}
+.navegacion{
+    color: turquoise;
+    background-color: rgb(90, 57, 121);
+    border-style: solid;
+    border-color: turquoise;
+}
+.dropdown-menu{
+    background-color: rgb(90, 57, 121) !important;
+    
+}
+.dropdown-item{
+    color: turquoise !important;
+}
+.dropdown-item:hover{
+    background-color: rgb(26, 25, 25)!important;
+}
+.contenedor{
+    background-color: rgb(26, 25, 25);
+    display: flex;
+    flex-wrap: nowrap;
+
+}

@@ -8,23 +8,24 @@
 
     <title>Homepage</title>
 
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 </head>
 
-<body>
+<body class="cuerpo">
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-1">
             </div>
             <div class="col-md-1">
-                <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                <img class="logo" src="./img/Logo.JPG">
             </div>
             <div class="col-md-9">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <nav class=" navbar navbar-expand-lg  navegacion">
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -33,50 +34,58 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                                <a class="nav-link linknavegacion" href="#">Inicio <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle linknavegacion" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Generos
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Acción</a>
-                                    <a class="dropdown-item" href="#">Animación</a>
-                                    <a class="dropdown-item" href="#">Aventura</a>
-                                    <a class="dropdown-item" href="#">Bélico Guerra</a>
-                                    <a class="dropdown-item" href="#">Biográfia</a>
-                                    <a class="dropdown-item" href="#">Ciencia Ficción</a>
-                                    <a class="dropdown-item" href="#">Comedia</a>
-                                    <a class="dropdown-item" href="#">Crimen</a>
-                                    <a class="dropdown-item" href="#">Documentales</a>
-                                    <a class="dropdown-item" href="#">Drama</a>
-                                    <a class="dropdown-item" href="#">Familiar</a>
-                                    <a class="dropdown-item" href="#">Fantasía</a>
-                                    <a class="dropdown-item" href="#">Misterio</a>
-                                    <a class="dropdown-item" href="#">Musical</a>
-                                    <a class="dropdown-item" href="#">Romance</a>
-                                    <a class="dropdown-item" href="#">Terror</a>
-                                    <a class="dropdown-item" href="#">Thriller</a>
+                                <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item linknavegacion" href="#">Acción</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Animación</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Aventura</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Bélico Guerra</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Biográfia</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Ciencia Ficción</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Comedia</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Crimen</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Documentales</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Drama</a>
+                                    <a class="dropdown-item linknavegacion"  href="#">Familiar</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Fantasía</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Misterio</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Musical</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Romance</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Terror</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Thriller</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle linknavegacion" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Rankings
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Estrenos</a>
-                                    <a class="dropdown-item" href="#">Mas Puntuadas</a>
-                                    <a class="dropdown-item" href="#">Mas vistas</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Estrenos</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Mas Puntuadas</a>
+                                    <a class="dropdown-item linknavegacion" href="#">Mas vistas</a>
                                 </div>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Buscar peliculas..."
                                 aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">🔎</button>
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">🔎</button>
                         </form>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link linknavegacion" href="#">Iniciar Sesion <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active ">
+                                <a class="nav-link linknavegacion" href="#">Registro <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
@@ -161,7 +170,7 @@
             <div class="col-md-1">
             </div>
         </div>
-        <div class="row">
+        <div class="row contenedor">
             <div class="col-md-1">
             </div>
             <div class="col-md-8">
