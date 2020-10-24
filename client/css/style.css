@@ -12,6 +12,7 @@
     color:turquoise;
 }
 .navegacion{
+    margin: 1%;
     color: turquoise;
     background-color: rgb(90, 57, 121);
     border-style: solid;
@@ -27,9 +28,29 @@
 .dropdown-item:hover{
     background-color: rgb(26, 25, 25)!important;
 }
+.carrusel{
+    border-style: solid;
+    border-color:turquoise;
+}
 .contenedor{
+    width: 100%;
     background-color: rgb(26, 25, 25);
     display: flex;
     flex-wrap: nowrap;
+    justify-content: space-between;
 
+}
+.Pelicula{
+    height: 30%;
+    width: 100%;
+    color: turquoise;
+    border-style: solid;
+    border-color:turquoise;
+    background-color: rgb(90, 57, 121);
+}
+.list-group-item{
+    background-color: rgb(26, 25, 25)!important;;
+}
+.top{
+    width: 20%;
 }
