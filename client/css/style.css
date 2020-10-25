@@ -172,9 +172,10 @@
   border:solid rgb(90, 57, 121);
   color: white;
 }
-.carro{
+.agregaralcarro{
  text-align: right;
  margin-bottom: 10%;
+ padding-right: 10%;
 }
 .footer{
    align-self: center;
