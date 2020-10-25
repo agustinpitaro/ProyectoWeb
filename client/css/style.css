@@ -158,6 +158,7 @@
     overflow: hidden;
 }
 .list-group-item{
+
     background-color: rgb(26, 25, 25)!important;
 }
 .top{
@@ -186,6 +187,7 @@
     background-color: rgb(90, 57, 121);
     border-style: solid;
     border-color: turquoise;
+
     position: bottom;
     bottom: 0%;
 }
