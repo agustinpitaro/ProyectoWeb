@@ -161,13 +161,10 @@
 
     background-color: rgb(26, 25, 25)!important;
 }
-<<<<<<< HEAD
-=======
 .producto{
   margin-left: auto;
   background-color:  rgb(26, 25, 25)!important;
 }
->>>>>>> origin/productoPage
 
 .infopeli{
   width: fit-content;
@@ -222,14 +219,16 @@ li{
 }
 
 .footer{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
     align-self: center;
     width: 100%;
-    margin: 1%;
+    
     color: turquoise;
     background-color: rgb(90, 57, 121);
     border-style: solid;
     border-color: turquoise;
-
     position: bottom;
     bottom: 0%;
 }
@@ -237,7 +236,7 @@ li{
   background-color: rgb(125, 77, 170)!important;
 }
 .botonregistro{
-  margin: 3%!important;
+  margin: 2%!important;
  
 }
 
