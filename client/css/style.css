@@ -141,7 +141,7 @@
     width: 100%;
     background-color: rgb(26, 25, 25);
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
 
 }
