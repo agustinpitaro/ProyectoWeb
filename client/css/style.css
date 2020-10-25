@@ -161,10 +161,6 @@
 
     background-color: rgb(26, 25, 25)!important;
 }
-.producto{
-  margin-left: 19%;
-  background-color:  rgb(26, 25, 25)!important;
-}
 
 .infopeli{
   width: fit-content;
@@ -177,6 +173,47 @@
  margin-bottom: 10%;
  padding-right: 10%;
 }
+li{
+  list-style: none;
+}
+.infousuario{
+  text-align: center;
+
+}
+
+.carro{
+  text-align: center;
+  background-color:rgb(64, 42, 94)!important ;
+
+  border: solid turquoise;
+}
+.eliminar{
+  text-align: right;
+}
+
+.productoscarro {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: max-content;
+  justify-content: space-evenly;
+
+}
+.productoinfo{
+  margin-left: 19%;
+  background-color:  rgb(26, 25, 25)!important;
+}
+.producto{
+  margin: 3%;
+  background-color:rgb(90, 57, 121)!important ;
+  border: solid turquoise;
+}
+.comprar{
+  border: solid turquoise;
+}
+
 .footer{
    align-self: center;
     width: 100%;
