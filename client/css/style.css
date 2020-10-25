@@ -90,7 +90,7 @@
   @keyframes cat {
     0%,
     100% {
-    text-shadow: 0 0 .5vw #32ccf3, 0 0 1.5vw #32ccf3, 0 0 5vw #32ccf3, 0 0 5vw #32ccf3, 0 0 .2vw #32ccf3, .5vw .5vw .1vw #147280;
+    text-shadow: 0 0 .5vw #a632f3, 0 0 1.5vw #a632f3, 0 0 5vw #a632f3, 0 0 5vw #a632f3, 0 0 .2vw #a632f3, .5vw .5vw .1vw #147280;
       color: #28D7FE;
     }
     50% {
@@ -158,18 +158,71 @@
     overflow: hidden;
 }
 .list-group-item{
-    background-color: rgb(26, 25, 25)!important;;
+
+    background-color: rgb(26, 25, 25)!important;
 }
-.top{
-    width: 20%;
+
+.infopeli{
+  width: fit-content;
+  background-color:rgb(26, 25, 25)!important; 
+  border:solid rgb(90, 57, 121);
+  color: white;
+}
+.agregaralcarro{
+ text-align: right;
+ margin-bottom: 10%;
+ padding-right: 10%;
+}
+li{
+  list-style: none;
+}
+.infousuario{
+  text-align: center;
+
+}
+
+.carro{
+  text-align: center;
+  background-color:rgb(64, 42, 94)!important ;
+
+  border: solid turquoise;
+}
+.eliminar{
+  text-align: right;
+}
+
+.productoscarro {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  justify-content: space-evenly;
+
+}
+.productoinfo{
+  margin-left: 19%;
+  background-color:  rgb(26, 25, 25)!important;
+}
+.producto{
+  margin: 3%;
+  background-color:rgb(90, 57, 121)!important ;
+  border: solid turquoise;
+}
+.comprar{
+  border: solid turquoise;
 }
 
 .footer{
+   align-self: center;
+    width: 100%;
     margin: 1%;
     color: turquoise;
     background-color: rgb(90, 57, 121);
     border-style: solid;
     border-color: turquoise;
-    position: relative;
-    bottom: 0;
+
+    position: bottom;
+    bottom: 0%;
 }
