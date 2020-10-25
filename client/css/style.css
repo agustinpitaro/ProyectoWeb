@@ -184,6 +184,7 @@ li{
 .carro{
   text-align: center;
   background-color:rgb(64, 42, 94)!important ;
+  flex-wrap: wrap;
 
   border: solid turquoise;
 }
