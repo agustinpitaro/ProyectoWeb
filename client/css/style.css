@@ -192,7 +192,6 @@ li{
   text-align: center;
   background-color:rgb(64, 42, 94)!important ;
   flex-wrap: wrap;
-
   border: solid turquoise;
 }
 .eliminar{
@@ -223,7 +222,7 @@ li{
 }
 
 .footer{
-   align-self: center;
+    align-self: center;
     width: 100%;
     margin: 1%;
     color: turquoise;
@@ -233,4 +232,26 @@ li{
 
     position: bottom;
     bottom: 0%;
+}
+.tabestilo{
+  background-color: rgb(125, 77, 170)!important;
+}
+.botonregistro{
+  margin: 3%!important;
+ 
+}
+
+.conectate{
+  padding-bottom: 5%;
+  justify-content: space-around;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+}
+.btnRegister{
+  background-color: rgb(143, 58, 223)!important;
+  margin: 2%;
+}
+.form-control{
+  font-size: small;
 }

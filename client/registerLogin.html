@@ -98,22 +98,22 @@
             <div class="col-md-1">
             </div>
             <div class="col-md-10 carro">
-                <div class="container register">
+                <div class="container register panelregistro">
                     <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab"
+                            <a class="nav-link active flux tabestilo" id="login-tab" data-toggle="tab" href="#login" role="tab"
                                 aria-controls="login" aria-selected="true">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                            <a class="nav-link flux tabestilo" id="register-tab" data-toggle="tab" href="#register" role="tab"
                                 aria-controls="register" aria-selected="false">Registrarse</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                        <div class="tab-pane fade show active conectate" id="login" role="tabpanel" aria-labelledby="login-tab">
                             <h3 class="register-heading">Conectate</h3>
-                            <div class="row register-form">
-                                <div class="col-md-6">
+                            <div class=" register-form">
+                                <div class="">
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Correo electronico" value="" />
                                     </div>
@@ -121,11 +121,11 @@
                                         <input type="password" class="form-control" placeholder="Contraseña" value="" />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="submit" class="btnRegister" value="Entrar" />
+                                <div class="">
                                     <input type="checkbox" class="form-check-input" id="mantenerSesion">
                                     <label class="form-check-label" for="mantenerSesion">Mantener sesion activa</label>
                                 </div>
+                                <input type="submit" class="btn btn-outline-info  flux botonregistro" value="Entrar" />
                             </div>
                         </div>
                         <div class="tab-pane fade show" id="register" role="tabpanel" aria-labelledby="register-tab">
@@ -146,20 +146,9 @@
                                         <input type="password" class="form-control" placeholder="Confirmar contraseña *"
                                             value="" />
                                     </div>
-                                    <div class="form-group">
-                                        <div class="maxl">
-                                            <label class="radio inline">
-                                                <input type="radio" name="gender" value="male" checked>
-                                                <span> Hombre </span>
-                                            </label>
-                                            <label class="radio inline">
-                                                <input type="radio" name="gender" value="female">
-                                                <span>Mujer </span>
-                                            </label>
-                                        </div>
-                                    </div>
+
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 conectate">
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Email *" value="" />
                                     </div>
@@ -169,7 +158,7 @@
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control">
-                                            <option class="hidden" selected disabled>Por favor, elija su pregunta secreta:</option>
+                                            <option class="hidden " selected disabled>Por favor, elija su pregunta secreta:</option>
                                             <option>Cual es tu fecha de nacimiento?</option>
                                             <option>Cual fue tu primer numero de telefono?</option>
                                             <option>Como es el nombre de tu primer mascota?</option>
@@ -179,9 +168,11 @@
                                         <input type="text" class="form-control" placeholder="Ingresa tu respuesta aqui *"
                                             value="" />
                                     </div>
-                                    <input type="submit" class="btnRegister" value="Register" />
+                                   
                                 </div>
+                                
                             </div>
+                            <input type="submit" class="btn btn-outline-info flux botonregistro" value="Registrarse" />
                         </div>
                     </div>
 
