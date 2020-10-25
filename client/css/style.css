@@ -141,7 +141,7 @@
     width: 100%;
     background-color: rgb(26, 25, 25);
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
 
 }
@@ -162,7 +162,7 @@
     background-color: rgb(26, 25, 25)!important;
 }
 .producto{
-  margin-left: 19%;
+  margin-left: auto;
   background-color:  rgb(26, 25, 25)!important;
 }
 
@@ -173,7 +173,7 @@
   color: white;
 }
 .agregaralcarro{
- text-align: right;
+ text-align: justify;
  margin-bottom: 10%;
  padding-right: 10%;
 }
