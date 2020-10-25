@@ -147,6 +147,8 @@
 }
 
 .Pelicula{
+    text-align: center;
+    padding: 5%;
     height: fit-content;
     width: fit-content;
     align-items: center;
@@ -156,13 +158,18 @@
     background-color: rgb(90, 57, 121);
     margin: 5px auto;
     overflow: hidden;
+    
+}
+.image{
+    width: 180px;
+    height: 250px;
 }
 .list-group-item{
-
     background-color: rgb(26, 25, 25)!important;
 }
 
 .infopeli{
+  
   width: fit-content;
   background-color:rgb(26, 25, 25)!important; 
   border:solid rgb(90, 57, 121);
@@ -212,6 +219,15 @@ li{
 }
 .comprar{
   border: solid turquoise;
+}
+
+.caja{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+
 }
 
 .footer{
