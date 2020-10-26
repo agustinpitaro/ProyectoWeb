@@ -1,0 +1,56 @@
+{
+    "status": "OK",
+    "Recientes": [
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula"
+
+        },
+        //aca irian todas las peliculas que son de la seccion recientes
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula"
+
+        }
+    ],
+    "TOP": [
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula"
+
+        },
+        //aca irian todas las peliculas que son de la seccion TOP
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula"
+
+        }
+    ],
+    "carrousel": [
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula",
+            "sinopsis": "Sinopsis"
+
+        },
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula",
+            "sinopsis": "Sinopsis"
+
+        },
+        {   
+            "link": "link para llegar a la productHome de la pelicula",
+            "imagen": "link de portada de pelicula",
+            "titulo": "Titulo de la pelicula",
+            "sinopsis": "Sinopsis"
+
+        }
+    ]
+}

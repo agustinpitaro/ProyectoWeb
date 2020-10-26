@@ -1,0 +1,10 @@
+{
+    "status": "OK",
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "contraseña": "12345",
+    "contraseñaConf": "12345",
+    "email": "asd@asd.com",
+    "telefono": "1234567890",
+    "secreta": "Tomy"
+}
