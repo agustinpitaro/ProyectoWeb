@@ -7,7 +7,7 @@
             "titulo": "Titulo de la pelicula"
 
         },
-        //aca irian todas las peliculas que son de la seccion recientes
+        /* aca irian todas las peliculas que son de la seccion recientes */
         {   
             "link": "link para llegar a la productHome de la pelicula",
             "imagen": "link de portada de pelicula",
