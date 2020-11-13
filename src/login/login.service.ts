@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from './User';
 import * as fs from 'fs';
 
+
 @Injectable()
 export class LoginService {
     public login(userInfo: any): boolean {
@@ -27,5 +28,4 @@ export class LoginService {
         }
         return listaUsers;
     }
-
 }
