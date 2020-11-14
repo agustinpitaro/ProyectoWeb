@@ -778,3 +778,13 @@ html, body {
 
 
 
+/*manoseado*/
+.imgcarousel{
+min-width: 100%;
+height: 400px ;
+}
+
+.itemnav{
+  
+  font-size: medium !important;
+}
