@@ -29,6 +29,20 @@ async function validateLogin(e) {
   }
 }
 
+if ('userLogged' == true){
+
+}
+
+function LogOut(){
+  window.sessionStorage.clear();
+
+}
+
+
 document
   .getElementById('login-button')
   .addEventListener('click', validateLogin);
+
+document
+  .getElementById('logout-button')
+  .addEventListener('click', LogOut);
