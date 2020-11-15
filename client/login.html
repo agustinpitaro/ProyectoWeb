@@ -93,23 +93,94 @@
         </div>
         </div>
     </nav>
-    <main class="page login-page">
-        <section class="clean-block clean-form dark" style="color: #2b2b2b;background-color: #2b2b2b;">
-            <div class="container text-white" style="background-color: #2b2b2b;color: #15b0ba;">
-                <div class="block-heading">
-                    <h1 style="color: #09dcea;font-family: 'Bungee Inline', cursive;">Log In</h1>
-                    <p></p>
-                </div>
-                <form style="background-color: #6625d0;">
-                    <div class="form-group"><label for="username" class="text-white" for="email" style="font-family: 'Bungee Inline', cursive;">Correo</label><input name="username" class="form-control item" type="email" id="username"></div>
-                    <div class="form-group"><label for="password" style="font-family: 'Bungee Inline', cursive;color: #ffffff;">Password</label><input name="password" class="form-control" type="password" id="password"></div>
-                    <div class="form-group">
-                        <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox"><label class="form-check-label" for="checkbox" style="color: #ffffff;font-family: 'Bungee Inline', cursive;">Mantener sesion</label></div>
-                    </div><button id="login-button" name="submit" class="btn btn-primary btn-block" value="Login" type="submit" style="font-family: 'Bungee Inline', cursive;background-color: rgb(21,176,186);color: #6625d0;">Log In</button></form>
-                    
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+          <div
+            id="login-row"
+            class="row justify-content-center align-items-center"
+          >
+            <div id="login-column" class="col-md-6">
+              <div id="login-box" class="col-md-12">
+                <form id="login-form" class="form">
+                  <h3 class="text-center text-info">Login</h3>
+                  <div class="form-group">
+                    <label for="username" class="text-info">Username:</label
+                    ><br />
+                    <input
+                      type="text"
+                      name="username"
+                      id="username"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group ">
+                    <label for="password" class="text-info">Password:</label
+                    ><br />
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group text-center">
+                    <input
+                      id="login-button"
+                      name="submit"
+                      class="btn btn-info btn-md"
+                      value="Login"
+                    />
+                  </div>
+                  <div
+                    class="modal fade text-center"
+                    id="myModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="text-center modal-dialog modal-dialog-centered"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="text-center modal-header">
+                          <h5
+                            class="text-center modal-title text-danger"
+                            id="exampleModalLongTitle"
+                          >
+                            Login failed
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Invalid username or password
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Try Again
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
+        </div>
+      </div>
     <footer class="page-footer dark">
         <footer id="footerpad">
             <div class="container">
@@ -124,7 +195,7 @@
             </div>
         </footer>
     </footer>
-    <script src="./js/login.js"></script>
+    
     <script src="js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/smart-forms.min.js"></script>
@@ -132,6 +203,7 @@
     <script src="js/smoothproducts.min.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/Animated-Pretty-Product-List-v12.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>
