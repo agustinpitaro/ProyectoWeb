@@ -1,3 +1,15 @@
+let logoutNavBar = document.getElementById('logout-navbar');
+logoutNavBar.style.display = "none";//oculto boton logout
+
+let registerNavBar = document.getElementById('register-navbar');
+
+let loginbutton = document.getElementById('login-button');
+let loginNavBar = document.getElementById('login-navbar');
+ 
+loginbutton.addEventListener('click', validateLogin);//asigno evento a boton de login del form
+logoutNavBar.addEventListener('click', logOut);//asigno evento a boton de logout del navbar
+
+
 async function validateLogin(e) {
   let user = {
     name: document.getElementById('username').value,
@@ -31,21 +43,19 @@ async function validateLogin(e) {
 
 }
 
+function checkSession(){
+  if (window.sessionStorage.getItem('userLogged')){
+    loginNavBar.style.display = "none";
+    registerNavBar.style.display = "none";
+    logoutNavBar.style.display = "block";
+  }
+}
+
 function logOut() {
   window.sessionStorage.setItem('userLogged', false);
   window.sessionStorage.removeItem('user');
   window.sessionStorage.clear();
-
 }
 
-let login = document.getElementById('login-button')
-if (login) {
-  document.addEventListener('click', validateLogin);
-}
-
-
-let logout = document.getElementById('logout-button');
-if (logout) {
-  logout.addEventListener('click', logOut);
-}
+checkSession();
 
