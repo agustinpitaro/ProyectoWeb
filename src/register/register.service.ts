@@ -5,14 +5,14 @@ import * as fs from 'fs';
 @Injectable()
 export class RegisterService {
     public register(userInfo: any): boolean {
-        let userLogged = new User(userInfo.name, userInfo.password);
+        let userRegister = new User(userInfo.name, userInfo.password);
         let users = this.getUsers();
         for (const user of users) {
-            if(user.getName() != userLogged.getName()){
-                    return true;
+            if(user.getName() == userRegister.getName()){
+                    return false;
             }
         }
-        return false;
+        return true;
     }
 
     private getUsers(): User[]{

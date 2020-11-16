@@ -11,3 +11,15 @@ async function validateRegister(e) {
         },
         body: JSON.stringify(user),
       });
+
+      if (await respuesta.json()) {
+        
+
+      }
+
+
+}
+let register = document.getElementById('register-button');
+if (register){
+    register.addEventListener('click', validateRegister);
+}
