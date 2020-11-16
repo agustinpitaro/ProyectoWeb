@@ -1,0 +1,13 @@
+{
+    "status": "OK",
+    "users": [
+        {
+            "name": "agustin@gmail.com",
+            "password": "5678"
+        },
+        {
+            "name": "dardo@gmail.com",
+            "password": "1234"
+        }  
+    ]
+}
