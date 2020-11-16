@@ -27,25 +27,25 @@ async function validateLogin(e) {
       .getElementById('login-button')
       .setAttribute('data-target', '#myModal');
   }
-  
+
 
 }
 
-function logOut(){
+function logOut() {
   window.sessionStorage.setItem('userLogged', false);
   window.sessionStorage.removeItem('user');
   window.sessionStorage.clear();
 
 }
 
-  let login = document.getElementById('login-button')
-  if (login){
-    document.addEventListener('click', validateLogin);
-  }
+let login = document.getElementById('login-button')
+if (login) {
+  document.addEventListener('click', validateLogin);
+}
 
 
 let logout = document.getElementById('logout-button');
-if (logout){
+if (logout) {
   logout.addEventListener('click', logOut);
 }
 
