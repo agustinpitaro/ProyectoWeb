@@ -39,8 +39,12 @@ async function validateLogin(e) {
       .getElementById('login-button')
       .setAttribute('data-target', '#myModal');
   }
+}
 
-
+function logOut(e){   
+  window.sessionStorage.clear();
+  debugger;
+  return true;
 }
 
 function checkSession(){
@@ -49,12 +53,6 @@ function checkSession(){
     registerNavBar.style.display = "none";
     logoutNavBar.style.display = "block";
   }
-}
-
-function logOut() {
-  window.sessionStorage.setItem('userLogged', false);
-  window.sessionStorage.removeItem('user');
-  window.sessionStorage.clear();
 }
 
 checkSession();

@@ -9,9 +9,4 @@ export class LoginController {
         return this.loginService.login(userInfo);
     }
 
-    // @Post('out')
-    // public logout(@Body() userInfo: any):boolean{
-    //     return this.loginService.login(userInfo);
-    // }
-
 }
