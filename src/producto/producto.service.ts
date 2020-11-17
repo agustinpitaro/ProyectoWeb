@@ -7,7 +7,6 @@ import * as fs from 'fs';
 export class ProductoService {
     public getProducto(id: any): Product {
         let selectedProduct = this.getDatos(id);
-        console.log(selectedProduct);
         return selectedProduct;
     }
 
