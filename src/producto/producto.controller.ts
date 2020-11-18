@@ -7,7 +7,7 @@ export class ProductoController {
     constructor(private productoService: ProductoService) { }
 
     @Get(':id')
-    public getProduct(@Param('id') id): Product {
+    public getProduct(@Param('id') id): Product[]{
         return this.productoService.getProducto(id);
     }
 }
