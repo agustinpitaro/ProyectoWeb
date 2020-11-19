@@ -86,11 +86,9 @@ async function load() {
         password: 1234,
     };
     window.sessionStorage.setItem('userLogged', true);
-    window.sessionStorage.setItem('user', user);
-
-    //VER ESTO 
-    //let dueno = window.sessionStorage.getItem('user').getName();
-    let duenoPage = /biblioteca/ + user.name;
+    window.sessionStorage.setItem('user', user.name);
+    let dueno = window.sessionStorage.getItem('user');
+    let duenoPage = /biblioteca/ + dueno;
     let response = await fetch(duenoPage, {
         method: 'GET',
         headers: {
