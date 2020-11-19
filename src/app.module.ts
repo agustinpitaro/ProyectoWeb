@@ -5,6 +5,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { BibliotecaController } from './biblioteca/biblioteca.controller';
 import { BibliotecaService } from './biblioteca/biblioteca.service';
+import { CatalogoController } from './catalogo/catalogo.controller';
+import { CatalogoService } from './catalogo/catalogo.service';
 
 @Module({
   imports: [
@@ -12,7 +14,7 @@ import { BibliotecaService } from './biblioteca/biblioteca.service';
       rootPath: join(__dirname, '..', 'client'),   // <-- path to the static files
     }),
   ],
-  controllers: [AppController, BibliotecaController],
-  providers: [AppService, BibliotecaService],
+  controllers: [AppController, BibliotecaController, CatalogoController],
+  providers: [AppService, BibliotecaService, CatalogoService],
 })
 export class AppModule {}
