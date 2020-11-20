@@ -5,20 +5,10 @@ import { CarritoService} from './carrito.service';
 @Controller('carrito')
 export class CarritoController {
 
-        constructor(private loginService: CarritoService) { }
+        constructor(private carritoService: CarritoService) { }
     
-        @Get()
-        public getProducto(): string {
-            return this.carritoService.getProducto();
-        }
-
-        @Delete()
-        public deleteProducto(): boolean {
-            return this.carritoService.deleteProducto();
-        }
-
         @Post()
-        public comprarProducto():boolean{
+        public comprarProducto():string{
             return this.carritoService.comprarProducto();
         }
     

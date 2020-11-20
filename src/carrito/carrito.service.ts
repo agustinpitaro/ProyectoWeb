@@ -1,19 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Producto} from './Producto';
 import * as fs from 'fs';
 
 @Injectable()
 export class CarritoService {
 
-    public deleteProducto(productoID: string):boolean{
-        //recibe el array y elimina por id
-    }
-    public getProducto(): Array[Producto]{
-        //trae el arreglo de productos
-     
+    public getProducto(): Array[string]{
+
    
     }
-    public comprarProducto():boolean{
+    public comprarProducto():string{
         //manda el arreglo de productos a biblioteca
     }
 
