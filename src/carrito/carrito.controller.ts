@@ -1,5 +1,4 @@
-import { Body, Controller, Delete, Post } from '@nestjs/common';
-import { userInfo } from 'os';
+import { Body, Controller, Post } from '@nestjs/common';
 import { CarritoService} from './carrito.service';
 
 @Controller('carrito')
@@ -8,10 +7,9 @@ export class CarritoController {
         constructor(private carritoService: CarritoService) { }
     
         @Post()
-        public comprarProducto():boolean{
-            return this.carritoService.comprarProducto();
+        public comprarProducto(@Body() compra: any):boolean{
+            return this.carritoService.confirmarCompra(compra);
         }
-    
     }
     
 
