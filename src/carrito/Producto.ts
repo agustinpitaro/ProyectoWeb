@@ -1,32 +1,40 @@
-export class Producto{
-    private name: string;
-    private id: string;
-    private price: Number;
-    private stock: Number ;
-    private description: string;
-    
+export class Product{
+    private imagen: string;
+    private link: string;
+    private titulo: string;
+    private precio: string;
+    private sinopsis: string;
+    private genero: string;
 
-    constructor(name: string, password: string){
-        this.id= id;
-        this.name=name;
-        this.stock= stock;
-        this.price = price;
-        this.description = description;
-    }
-    public getID():string{
-        return this.id;
+
+    constructor(titulo: string, sinopsis: string, imagen: string, link: string, precio: string, genero:string){
+        this.imagen=imagen;
+        this.link=link;
+        this.titulo = titulo;
+        this.precio = precio;
+        this.sinopsis = sinopsis;
+        this.genero = genero;
     }
 
-    public getName(): string{
-        return this.name;
+    public getImagen(): string{
+        return this.imagen;
     }
-    public getStock(): Number{
-        return this.stock;
+
+    public getGenero(): string{
+        return this.genero;
     }
-    public getPrice(): Number{
-        return this.price;
+
+    public getLink(): string{
+        return this.link;
     }
-    public getDescription(): string{
-        return this.description;
+    public getTitulo(): string{
+        return this.titulo;
     }
+    public getPrecio(): string{
+        return this.precio;
+    }
+    public getSinopsis(): string{
+        return this.sinopsis;
+    }
+
 }
