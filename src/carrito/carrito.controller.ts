@@ -8,7 +8,7 @@ export class CarritoController {
         constructor(private carritoService: CarritoService) { }
     
         @Post()
-        public comprarProducto():string{
+        public comprarProducto():boolean{
             return this.carritoService.comprarProducto();
         }
     
