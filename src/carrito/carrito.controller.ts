@@ -1,22 +1,27 @@
-import { Body, Controller, Delete } from '@nestjs/common';
+import { Body, Controller, Delete, Post } from '@nestjs/common';
 import { userInfo } from 'os';
 import { CarritoService} from './carrito.service';
 
 @Controller('carrito')
 export class CarritoController {
 
-    export class CarritoController {
         constructor(private loginService: CarritoService) { }
     
-        @Post('compra')
-        public carrito(@Body() userInfo: any):boolean{
-            return this.carritoService.carrito(userInfo);
+        @Get()
+        public getProducto(): string {
+            return this.carritoService.getProducto();
         }
-        @Delete('delete')
-        public quitar(@Body() userInfo: any):boolean{
-            return this.carritoService.carrito(productoInfo);
+
+        @Delete()
+        public deleteProducto(): boolean {
+            return this.carritoService.deleteProducto();
+        }
+
+        @Post()
+        public comprarProducto():boolean{
+            return this.carritoService.comprarProducto();
         }
     
     }
     
-}
+
