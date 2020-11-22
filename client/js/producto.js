@@ -1,3 +1,6 @@
+let botonCarrito = document.getElementById('carrito-button');
+botonCarrito.addEventListener('click', cargarProducto);
+
 function loadProducto(data){
     let fullImg = document.getElementById('fullImg');
     let productImg = document.getElementById('productImg');
@@ -14,7 +17,6 @@ function loadProducto(data){
 
 function loadRelacionados(data){
     let related = document.querySelectorAll("div.related");
-    debugger;
     let indice = 1;
     related.forEach( item =>{
         //Agrego imagen
@@ -47,14 +49,29 @@ async function load() {
         params[tmparr[0]] = tmparr[1];
     }
     productPage = `/producto/${params["link"]}`; 
-    let response = await fetch(`/producto/${params["link"]}`, {
+    let response = await fetch(productPage, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     });
-    let data = await response.json();
+    data = await response.json();
     loadProducto(data);
 }
-    
+
+function cargarProducto(e){
+    if(window.sessionStorage.getItem('carrito')){
+        let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
+        let producto = data[0].link;
+        carrito.push(producto);
+        window.sessionStorage.setItem('carrito',  JSON.stringify(carrito));
+    }
+    else{
+        let carrito = [];
+        let producto = data[0].link;
+        carrito.push(producto);
+        window.sessionStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+}
+let data;
 load();
