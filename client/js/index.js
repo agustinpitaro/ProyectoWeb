@@ -8,7 +8,7 @@ function loadCarousel(data) {
         let itemImg = item.querySelector("img");
         itemImg.src = data[indice].imagen;
         //Agrego enlace a la pagina del producto
-        itemImg.href = "/producto/"+data[indice].link;
+        itemImg.href = "product.html?link="+data[indice].link;
 
         //Agrego titulo
         let titulo = item.querySelector("h1");
@@ -40,7 +40,7 @@ function loadRecientes(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "/producto/"+producto.link;
+        aImg.href = "product.html?link="+producto.link;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -58,7 +58,7 @@ function loadRecientes(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "/producto/"+producto.link;
+        aTitulo.href = "product.html?link="+producto.link;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -92,7 +92,7 @@ function loadRecientes(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
-        buttonVer.href = "/producto/"+producto.link;
+        buttonVer.href = "product.html?link="+producto.link;
 
         divColBoton.appendChild(buttonVer);
         divColPrecio.appendChild(pPrecio);
@@ -130,7 +130,7 @@ function loadPopulares(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "/producto/"+producto.link;
+        aImg.href = "product.html?link="+producto.link;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -148,7 +148,7 @@ function loadPopulares(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "/producto/"+producto.link;
+        aTitulo.href = "product.html?link="+producto.link;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -182,7 +182,7 @@ function loadPopulares(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
-        buttonVer.href = "/producto/"+producto.link;
+        buttonVer.href = "product.html?link="+producto.link;
 
         divColBoton.appendChild(buttonVer);
         divColPrecio.appendChild(pPrecio);

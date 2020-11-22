@@ -18,7 +18,7 @@ function loadCatalogo(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "/producto/"+producto.link;
+        aImg.href = "product.html?link="+producto.link;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -35,7 +35,7 @@ function loadCatalogo(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "/producto/"+producto.link;
+        aTitulo.href = "product.html?link="+producto.link;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -62,7 +62,7 @@ function loadCatalogo(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
-        buttonVer.href = "/producto/"+producto.link;
+        buttonVer.href = "product.html?link="+producto.link;
 
         divColBoton.appendChild(buttonVer);
         divRowBoton.appendChild(divColBoton);
