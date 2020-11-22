@@ -4,11 +4,16 @@ logoutNavBar.style.display = "none";//oculto boton logout
 let registerNavBar = document.getElementById('register-navbar');
 
 let loginbutton = document.getElementById('login-button');
-let loginNavBar = document.getElementById('login-navbar');
- 
 loginbutton.addEventListener('click', validateLogin);//asigno evento a boton de login del form
+
+let loginNavBar = document.getElementById('login-navbar');
 logoutNavBar.addEventListener('click', logOut);//asigno evento a boton de logout del navbar
 
+function logOut(e){   
+  window.sessionStorage.clear();
+  debugger;
+  return true;
+}
 
 async function validateLogin(e) {
   let user = {
@@ -39,12 +44,6 @@ async function validateLogin(e) {
       .getElementById('login-button')
       .setAttribute('data-target', '#myModal');
   }
-}
-
-function logOut(e){   
-  window.sessionStorage.clear();
-  debugger;
-  return true;
 }
 
 function checkSession(){
