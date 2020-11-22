@@ -37,9 +37,7 @@ async function loadCarrito(){
             },
         });
         let data = await response.json();
+        console.log(data);
         productos.push(data);
-    }
-    
-    
-
+    }  
 }
