@@ -7,7 +7,6 @@ export class CarritoService {
     public confirmarCompra(compra: any): boolean {
         for (let i in compra.compra) {
             let linea = "\n"+ compra.username + "," +  compra.compra[i];
-            console.log(linea);
             fs.appendFileSync("resources/biblioteca.csv", linea);
         }
         return true;
