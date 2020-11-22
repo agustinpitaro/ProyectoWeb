@@ -9,6 +9,10 @@ import { ProductoController } from './producto/producto.controller';
 import { ProductoService } from './producto/producto.service';
 import { IndexController } from './index/index.controller';
 import { IndexService } from './index/index.service';
+import { BibliotecaController } from './biblioteca/biblioteca.controller';
+import { BibliotecaService } from './biblioteca/biblioteca.service';
+import { CatalogoController } from './catalogo/catalogo.controller';
+import { CatalogoService } from './catalogo/catalogo.service';
 
 @Module({
   imports: [
@@ -16,7 +20,7 @@ import { IndexService } from './index/index.service';
       rootPath: join(__dirname, '..', 'client'),   // <-- path to the static files
     }),
   ],
-  controllers: [AppController, IndexController, ProductoController,CarritoController],
-  providers: [AppService, CarritoService, ProductoService, IndexService],
+  controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController],
+  providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService],
 })
 export class AppModule {}
