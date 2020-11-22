@@ -2,8 +2,8 @@ let comprar = document.getElementById('button-compra');
 comprar.addEventListener('click', efectuarCompra);
 
 async function efectuarCompra(e) {
-    let carrito = windows.sessionStorage.getItem('carrito');
-    let user = windows.sessionStorage.getItem('user');
+    let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
+    let user = JSON.parse(window.sessionStorage.getItem('user'));
 
     let compra = {
         username:user.username,
@@ -27,9 +27,11 @@ async function efectuarCompra(e) {
 }
 
 async function loadCarrito(){
-    let carrito = windows.sessionStorage.getItem('carrito');
+    let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
     let productos = [];
     for (let i in carrito){
+        let productPage = '/producto/'+carrito[i];
+        debugger;
         let response = await fetch('/producto/'+carrito[i], {
             method: 'GET',
             headers: {
@@ -41,3 +43,4 @@ async function loadCarrito(){
         productos.push(data);
     }  
 }
+loadCarrito();
