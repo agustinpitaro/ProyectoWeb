@@ -13,6 +13,8 @@ import { BibliotecaController } from './biblioteca/biblioteca.controller';
 import { BibliotecaService } from './biblioteca/biblioteca.service';
 import { CatalogoController } from './catalogo/catalogo.controller';
 import { CatalogoService } from './catalogo/catalogo.service';
+import { RegisterController } from './register/register.controller';
+import { RegisterService } from './register/register.service';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { CatalogoService } from './catalogo/catalogo.service';
       rootPath: join(__dirname, '..', 'client'),   // <-- path to the static files
     }),
   ],
-  controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController],
-  providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService],
+  controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController, RegisterController],
+  providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService, RegisterService],
 })
 export class AppModule {}
