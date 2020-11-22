@@ -15,6 +15,8 @@ import { CatalogoController } from './catalogo/catalogo.controller';
 import { CatalogoService } from './catalogo/catalogo.service';
 import { RegisterController } from './register/register.controller';
 import { RegisterService } from './register/register.service';
+import { LoginController } from './login/login.controller';
+import { LoginService } from './login/login.service';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { RegisterService } from './register/register.service';
       rootPath: join(__dirname, '..', 'client'),   // <-- path to the static files
     }),
   ],
-  controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController, RegisterController],
-  providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService, RegisterService],
+  controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController, RegisterController, LoginController],
+  providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService, RegisterService, LoginService],
 })
 export class AppModule {}

@@ -1,58 +1,59 @@
-"use strict"
-let logginbutton = document
-.getElementById('login-button')
-.addEventListener('click', validateLogin);
+let logoutNavBar = document.getElementById('logout-navbar');
+logoutNavBar.style.display = "none";//oculto boton logout
 
-/*let logoutButton = document
-.getElementById('logout-button')
-.addEventListener('click', LogOut);*/
+let registerNavBar = document.getElementById('register-navbar');
 
-async function validateLogin() {
-  console.log("funcion validar");
+let loginbutton = document.getElementById('login-button');
+let loginNavBar = document.getElementById('login-navbar');
+ 
+loginbutton.addEventListener('click', validateLogin);//asigno evento a boton de login del form
+logoutNavBar.addEventListener('click', logOut);//asigno evento a boton de logout del navbar
+
+
+async function validateLogin(e) {
   let user = {
-    name: document.getElementById('email').value,
+    name: document.getElementById('username').value,
     password: document.getElementById('password').value,
   };
-  console.log(user);
-  let response = await fetch("http://localhost:3000/login.json");
 
-  if(response.ok){
-    let data = await response.json();
-    if(checkUser(user, data.users)){
-      window.sessionStorage.setItem('userLogged', true);
-      window.sessionStorage.setItem('user', user);
-      window.location.href = 'http://localhost:3000/index.html';
-      console.log("Esta to bien");
-    }
-    //mostrar cartel de datos erroneos
-    else {
-      document.getElementById('username').focus();
-      document
-        .getElementById('login-button')
-        .setAttribute('data-toggle', 'modal');
-      document
-        .getElementById('login-button')
-        .setAttribute('data-target', '#myModal');
-        console.log("Ta to mal");
-    }
+  let respuesta = await fetch('/login/validate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  });
+
+  if (await respuesta.json()) {
+    window.sessionStorage.setItem('userLogged', true);
+    window.sessionStorage.setItem('user', user);
+    window.location.href = 'http://localhost:3000';
   }
-  else{
-    console.log("algo salio mal xD");
+  //mostrar cartel de datos erroneos
+  else {
+    document.getElementById('username').focus();
+    document
+      .getElementById('login-button')
+      .setAttribute('data-toggle', 'modal');
+    document
+      .getElementById('login-button')
+      .setAttribute('data-target', '#myModal');
+  }
 }
 
-}
-
-function checkUser(user, data){
-  data.forEach( userBase =>{
-    if(user.name.equals(userBase.name) && user.password.equals(userBase.password))
-      console.log("usuario valido");
-      return true;
-  })
-  console.log("usuario invalidad");
-  return false;
-}
-
-function LogOut(){
+function logOut(e){   
   window.sessionStorage.clear();
-
+  debugger;
+  return true;
 }
+
+function checkSession(){
+  if (window.sessionStorage.getItem('userLogged')){
+    loginNavBar.style.display = "none";
+    registerNavBar.style.display = "none";
+    logoutNavBar.style.display = "block";
+  }
+}
+
+checkSession();
+
