@@ -1,3 +1,18 @@
+let loginNavBar = document.getElementById('login-navbar');
+loginNavBar.style.display = "none";//oculto boton logout
+
+let registerButton = document.getElementById('register-navbar');
+registerButton.style.display = "none";//oculto boton register
+
+let logoutNavBar = document.getElementById('logout-button');
+logoutNavBar.style.addEventListener('click', logOut);
+
+function logOut(e){   
+  window.sessionStorage.clear();
+  window.location.href = 'http://localhost:3000';
+  return true;
+}
+
 let comprar = document.getElementById('button-compra');
 comprar.addEventListener('click', efectuarCompra);
 

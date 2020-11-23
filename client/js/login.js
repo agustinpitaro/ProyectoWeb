@@ -1,19 +1,16 @@
 let logoutNavBar = document.getElementById('logout-navbar');
 logoutNavBar.style.display = "none";//oculto boton logout
-
-let registerNavBar = document.getElementById('register-navbar');
+let carritoNavBar = document.getElementById('carrito-navbar');
+carritoNavBar.style.display = "none";//oculto boton carrito
+let bibliotecaNavBar = document.getElementById('biblioteca-navbar');
+bibliotecaNavBar.style.display = "none";//oculto boton biblioteca
+let loginNavBar = document.getElementById('login-navbar');
+loginNavBar.style.display = "block";//muestro boton logout
+let registerButton = document.getElementById('register-navbar');
+registerButton.style.display = "block";//muestro boton register
 
 let loginbutton = document.getElementById('login-button');
 loginbutton.addEventListener('click', validateLogin);//asigno evento a boton de login del form
-
-let loginNavBar = document.getElementById('login-navbar');
-logoutNavBar.addEventListener('click', logOut);//asigno evento a boton de logout del navbar
-
-function logOut(e){   
-  window.sessionStorage.clear();
-  debugger;
-  return true;
-}
 
 async function validateLogin(e) {
   let user = {
@@ -45,14 +42,3 @@ async function validateLogin(e) {
       .setAttribute('data-target', '#myModal');
   }
 }
-
-function checkSession(){
-  if (window.sessionStorage.getItem('userLogged')){
-    loginNavBar.style.display = "none";
-    registerNavBar.style.display = "none";
-    logoutNavBar.style.display = "block";
-  }
-}
-
-checkSession();
-
