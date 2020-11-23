@@ -15,7 +15,7 @@ export class IndexController {
         return this.IndexService.getProductos();//proximamente va a ser otra funcion mas especifica xd
     }
 
-    @Get('top')
+    @Get('populares')
     public getProductosPopulares(): Product[]{
         return this.IndexService.getProductos();//proximamente va a ser otra funcion mas especifica xd
     }
