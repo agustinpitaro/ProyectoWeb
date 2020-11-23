@@ -256,7 +256,6 @@ function logOut(e) {
 }
 
 function checkSession() {
-    debugger;
     if (window.sessionStorage.getItem('user')) {
         let loginNavBar = document.getElementById('login-navbar');
         loginNavBar.style.display = "none";//oculto boton login

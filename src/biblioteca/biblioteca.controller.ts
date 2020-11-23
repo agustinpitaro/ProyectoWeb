@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { BibliotecaService } from './biblioteca.service';
-import { Product } from '../producto/producto';
+import { Product } from '../producto/Product';
 
 @Controller('biblioteca')
 export class BibliotecaController {

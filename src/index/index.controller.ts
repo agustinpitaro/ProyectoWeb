@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { IndexService } from './index.service';
-import { Product } from '../producto/producto';
+import { Product } from '../producto/Product';
 @Controller('index')
 export class IndexController {
     constructor(private IndexService: IndexService) { }

@@ -21,7 +21,7 @@ export class ProductoService {
             .map(p => p.replace('\r', '')).map(p => p.split(','));
 
         for (let i = 0; i < elementos.length && cantidad < 3; i++) {
-            let productoBD = new Product(elementos[i][0], elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5]);
+            let productoBD = new Product(elementos[i][0], elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6]);
             if (productoBD.getGenero() == producto.getGenero() && productoBD.getTitulo() != producto.getTitulo()) {
                 listaRelacionados.push(productoBD);
                 cantidad++;
@@ -36,7 +36,7 @@ export class ProductoService {
         const elementos = archivo.split('\n')
             .map(p => p.replace('\r', '')).map(p => p.split(','));
         for (let i = 0; i < elementos.length; i++) {
-            let producto = new Product(elementos[i][0], elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5]);
+            let producto = new Product(elementos[i][0], elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6]);
             if (producto.getLink() == id) {
                 return producto;
             }

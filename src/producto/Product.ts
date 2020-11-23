@@ -1,13 +1,15 @@
 export class Product{
+    id:string;
     private imagen: string;
-    private link: string;
-    private titulo: string;
+    link: string;
+    titulo: string;
     private precio: string;
     private sinopsis: string;
-    private genero: string;
+    genero: string;
 
 
-    constructor(titulo: string, sinopsis: string, imagen: string, link: string, precio: string, genero:string){
+    constructor(id:string, titulo: string, sinopsis: string, imagen: string, link: string, precio: string, genero:string){
+        this.id = id;
         this.imagen=imagen;
         this.link=link;
         this.titulo = titulo;

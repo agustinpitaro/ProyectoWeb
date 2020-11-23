@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from '../producto/producto';
+import { Product } from '../producto/Product';
 import * as fs from 'fs';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class BibliotecaService {
         for(let j = 0; j < nombres.length; j++){
             for (let i = 0; i < elementosP.length; i++) {
                 if(nombres[j] == elementosP[i][3]){
-                    let producto = new Product(elementosP[i][0], elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5]);
+                    let producto = new Product(elementosP[i][0], elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5],elementosP[i][6]);
                     listaProductos.push(producto);
                     break;
                 }
