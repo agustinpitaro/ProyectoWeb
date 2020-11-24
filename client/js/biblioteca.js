@@ -80,7 +80,6 @@ function loadBiblioteca(data) {
 }
 async function load() {
     console.log("Funcion de carga producto");
-    debugger;
     let dueno = window.sessionStorage.getItem('user');
     let duenoPage = /biblioteca/ + dueno;
     let response = await fetch(duenoPage, {
@@ -90,7 +89,6 @@ async function load() {
         },
     });
     let data = await response.json();
-    debugger;
     loadBiblioteca(data);
 }
 

@@ -12,7 +12,6 @@ buscador.addEventListener('keyup', function (e) {
     }
     else {
         if (buscador.value.length > 3) {
-            debugger;
             predict.style.display = "block";
             predictLI.innerHTML = miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 })[0].titulo;
         }
