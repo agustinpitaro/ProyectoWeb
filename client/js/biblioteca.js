@@ -1,25 +1,3 @@
-let loginNavBar = document.getElementById('login-navbar');
-loginNavBar.style.display = "none";//oculto boton logout
-
-let registerButton = document.getElementById('register-navbar');
-registerButton.style.display = "none";//oculto boton register
-
-let logoutNavBar = document.getElementById('logout-button');
-logoutNavBar.addEventListener('click', logOut);
-
-// let searchPersonal = document.getElementById('searchPersonal');
-// searchPersonal.addEventListener('keyup', function (e) {
-//     if (e.type=== 13) {
-//         debugger;
-//     }
-// }, false);
-
-function logOut(e){   
-  window.sessionStorage.clear();
-  window.location.href = 'http://localhost:3000';
-  return true;
-}
-
 function loadBiblioteca(data) {
     let lista = document.getElementById('product-list');
     let indice = 0;
@@ -102,13 +80,7 @@ function loadBiblioteca(data) {
 }
 async function load() {
     console.log("Funcion de carga producto");
-
-    let user = {
-        name: "aaaa@aaaa.com",
-        password: 1234,
-    };
-    window.sessionStorage.setItem('userLogged', true);
-    window.sessionStorage.setItem('user', user.name);
+    debugger;
     let dueno = window.sessionStorage.getItem('user');
     let duenoPage = /biblioteca/ + dueno;
     let response = await fetch(duenoPage, {

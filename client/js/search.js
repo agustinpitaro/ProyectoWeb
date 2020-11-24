@@ -1,22 +1,29 @@
 let buscador = document.getElementById('search');
-buscador.addEventListener('input', predict);
+let predict = document.createElement('ul');
+buscador.parentNode.appendChild(predict);
+let predictLI = document.createElement('li');
+predict.appendChild(predictLI);
+
 buscador.addEventListener('keyup', function (e) {
     if (e.code === 'Enter') {
-        let productPage = "product.html?link=" + buscador.value;
+        debugger;
+        let productPage = "product.html?link=" + miniSearch.search(miniSearch.autoSuggest(buscador.value)[0].suggestion, { fuzzy: 0.2 })[0].link;
         window.location.href = productPage;
     }
-});
+    else {
+        if (buscador.value.length > 3) {
+            debugger;
+            predict.style.display = "block";
+            predictLI.innerHTML = miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 })[0].titulo;
+        }
+        else {
+            predictLI.innerHTML = '';
+            predict.style.display = "none";
+        }
 
-let buscarBoton = document.getElementById('search-button');
-buscarBoton
-
-function predict(e) {
-    console.log(e.target.value);
-    if (miniSearch.autoSuggest(e.target.value).length > 0)
-        console.log(miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }));
-
+    }
 }
-
+);
 
 async function searchBar() {
 

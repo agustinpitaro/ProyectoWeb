@@ -1,27 +1,12 @@
-let loginNavBar = document.getElementById('login-navbar');
-loginNavBar.style.display = "none";//oculto boton logout
-
-let registerButton = document.getElementById('register-navbar');
-registerButton.style.display = "none";//oculto boton register
-
-let logoutNavBar = document.getElementById('logout-button');
-logoutNavBar.style.addEventListener('click', logOut);
-
-function logOut(e){   
-  window.sessionStorage.clear();
-  window.location.href = 'http://localhost:3000';
-  return true;
-}
-
 let comprar = document.getElementById('button-compra');
 comprar.addEventListener('click', efectuarCompra);
 
 async function efectuarCompra(e) {
     let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
-    let user = JSON.parse(window.sessionStorage.getItem('user'));
+    let user = window.sessionStorage.getItem('user');
 
     let compra = {
-        username: user.username,
+        username: user,
         compra: carrito
     }
     let respuesta = await fetch('/carrito/', {
@@ -33,6 +18,7 @@ async function efectuarCompra(e) {
     });
 
     if (await respuesta.json()) {
+        window.sessionStorage.removeItem('carrito');
         window.location.href = 'http://localhost:3000/biblioteca.html';
     }
     //mostrar cartel de datos erroneos
@@ -42,7 +28,7 @@ async function efectuarCompra(e) {
 }
 
 function eliminarProducto(e) {
-    className = "product";
+    let className = "product";
     let precio = e.currentTarget.myParam[1];
     let producto = e.currentTarget.myParam[0];
 
@@ -54,12 +40,15 @@ function eliminarProducto(e) {
         }
     }
     el.parentNode.removeChild(el);
-
     let h4Producto = document.querySelector('#' + producto);
     h4Producto.parentNode.removeChild(h4Producto);
-
     let total = document.querySelector('#total');
     total.innerText = +total.innerText - +precio;
+    debugger;
+    let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
+    carrito.splice(carrito.indexOf(producto),1);
+    window.sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
 }
 
 function loadProductos(productos) {
@@ -167,24 +156,14 @@ async function loadCarrito() {
     let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
     let productos = [];
     for (let i in carrito) {
-        let productPage = '/producto/' + carrito[i];
-        /*
         let response = await fetch('/producto/' + carrito[i], {
             method: 'GET',
             headers: {
             'Content-Type': 'application/json',
             },
         });
-        let data = await response.json();*/
-        let data = {
-            genero: "accion",
-            imagen: "https://cnet1.cbsistatic.com/img/l-xJp5JmvfZUGTVlfJ7O-wVVRTI=/940x0/2019/03/14/70b49c1d-0d3b-4b75-9225-b898b83cdc9a/avengers-endgame-poster-og-social-crop.jpg",
-            link: "avengersendgame",
-            precio: "100",
-            sinopsis: "Tras los sucesos de Vengadores: Infinity War los superhéroes que sobrevivieron a Thanos se reunen para poner en práctica un plan definitivo que podría acabar con el villano definitivamente. No saben si funcionará pero es su única oportunidad de intentarlo. Cuarta entrega de la saga Vengadores",
-            titulo: "Avengers: Endgame / Vengadores 4",
-        }
-        productos.push(data);
+        let data = await response.json();
+        productos.push(data[0]);
     }
     loadProductos(productos);
 }

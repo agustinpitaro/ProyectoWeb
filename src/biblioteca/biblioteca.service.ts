@@ -11,6 +11,7 @@ export class BibliotecaService {
         let productos = fs.readFileSync('resources/productos.csv', 'utf8');
         const elementosP = productos.split('\n')
             .map(p => p.replace('\r', '')).map(p => p.split(','));
+
         let nombres = [];
         let listaProductos: Product[] = [];
         for (let i = 0; i < elementosB.length; i++) {
@@ -20,7 +21,7 @@ export class BibliotecaService {
         }
         for(let j = 0; j < nombres.length; j++){
             for (let i = 0; i < elementosP.length; i++) {
-                if(nombres[j] == elementosP[i][3]){
+                if(nombres[j] == elementosP[i][4]){
                     let producto = new Product(elementosP[i][0], elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5],elementosP[i][6]);
                     listaProductos.push(producto);
                     break;
