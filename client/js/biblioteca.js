@@ -5,7 +5,14 @@ let registerButton = document.getElementById('register-navbar');
 registerButton.style.display = "none";//oculto boton register
 
 let logoutNavBar = document.getElementById('logout-button');
-logoutNavBar.style.addEventListener('click', logOut);
+logoutNavBar.addEventListener('click', logOut);
+
+// let searchPersonal = document.getElementById('searchPersonal');
+// searchPersonal.addEventListener('keyup', function (e) {
+//     if (e.type=== 13) {
+//         debugger;
+//     }
+// }, false);
 
 function logOut(e){   
   window.sessionStorage.clear();

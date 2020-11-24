@@ -1,16 +1,25 @@
 let buscador = document.getElementById('search');
 buscador.addEventListener('input', predict);
+buscador.addEventListener('keyup', function (e) {
+    if (e.code === 'Enter') {
+        let productPage = "product.html?link=" + buscador.value;
+        window.location.href = productPage;
+    }
+});
 
-function predict(e){
+let buscarBoton = document.getElementById('search-button');
+buscarBoton
+
+function predict(e) {
     console.log(e.target.value);
-    if(miniSearch.autoSuggest(e.target.value).length > 0)
-        console.log(miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion,{ fuzzy: 0.2 }));
-    
+    if (miniSearch.autoSuggest(e.target.value).length > 0)
+        console.log(miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }));
+
 }
 
 
 async function searchBar() {
-    
+
     let response = await fetch(/catalogo/, {
         method: 'GET',
         headers: {
