@@ -35,9 +35,10 @@ export class ProductoService {
         let archivo = fs.readFileSync('resources/productos.csv', 'utf8');
         const elementos = archivo.split('\n')
             .map(p => p.replace('\r', '')).map(p => p.split(','));
+        
         for (let i = 0; i < elementos.length; i++) {
             let producto = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);
-            if (producto.getNroProducto == id) {
+            if (producto.getNroProducto() == id) {
                 return producto;
             }
         }
