@@ -1,5 +1,31 @@
+let buscadorPersonal = document.getElementById('buscadorPersonal');
+let genero;
+let data;
+
+let miniSearchCatalogo = new MiniSearch({
+    fields: ['titulo'], // fields to index for full-text search
+    storeFields: ['link', 'titulo', 'genero', 'imagen', 'sinopsis', 'precio'] // fields to return with search results
+});
+
+buscadorPersonal.addEventListener('keyup', function (e) {
+    if (buscadorPersonal.value.length > 3 && miniSearch.search(miniSearch.autoSuggest(buscadorPersonal.value)[0].suggestion, { fuzzy: 0.2 })) {
+        debugger;
+        let algo = miniSearch.autoSuggest(buscadorPersonal.value);
+        let algo2 = miniSearch.search(miniSearch.autoSuggest(buscadorPersonal.value)[0].suggestion, { fuzzy: 0.2 });
+        debugger;
+        loadCatalogo(algo2);
+    }
+    else {
+        loadCatalogo(data);
+    }
+}
+);
+
 function loadCatalogo(data) {
     let lista = document.getElementById('product-list');
+    while (lista.firstChild) {
+        lista.removeChild(lista.firstChild);
+    }
     let indice = 0;
     data.forEach(producto => {
         //Creo estructura del producto
@@ -18,7 +44,7 @@ function loadCatalogo(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "product.html?link="+producto.link;
+        aImg.href = "product.html?link=" + producto.link;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -35,7 +61,7 @@ function loadCatalogo(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "product.html?link="+producto.link;
+        aTitulo.href = "product.html?link=" + producto.link;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -62,7 +88,7 @@ function loadCatalogo(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
-        buttonVer.href = "product.html?link="+producto.link;
+        buttonVer.href = "product.html?link=" + producto.link;
 
         divColBoton.appendChild(buttonVer);
         divRowBoton.appendChild(divColBoton);
@@ -79,6 +105,7 @@ function loadCatalogo(data) {
         lista.appendChild(contenedor);
     });
 }
+
 async function load() {
     console.log("Funcion de carga catalogo");
     let response = await fetch(/catalogo/, {
@@ -87,8 +114,8 @@ async function load() {
             'Content-Type': 'application/json',
         },
     });
-    let data = await response.json();
-    debugger;
+    data = await response.json();
     loadCatalogo(data);
 }
 load();
+

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { Product } from './Product';
+import { Product } from '../producto';
 import { ProductoService } from './producto.service';
 
 @Controller('producto')

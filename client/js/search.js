@@ -33,11 +33,10 @@ async function searchBar() {
         },
     });
     let data = await response.json();
-    console.log(data);
     miniSearch.addAll(data);
 }
 let miniSearch = new MiniSearch({
     fields: ['titulo'], // fields to index for full-text search
     storeFields: ['link', 'titulo', 'genero'] // fields to return with search results
-})
+});
 searchBar();
