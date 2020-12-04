@@ -18,6 +18,10 @@ export class Product{
         this.genero_secundario = genero_secundario;
         this.link=link;        
     }
+    public getNroProducto(): number{
+        return this.nro_producto;
+    }
+
 
     public getImagen(): string{
         return this.imagen;

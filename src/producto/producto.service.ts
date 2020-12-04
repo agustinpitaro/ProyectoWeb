@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from './Product';
+import { Product } from '../producto';
 import * as fs from 'fs';
 
 
@@ -21,8 +21,8 @@ export class ProductoService {
             .map(p => p.replace('\r', '')).map(p => p.split(','));
 
         for (let i = 0; i < elementos.length && cantidad < 3; i++) {
-            let productoBD = new Product(elementos[i][0], elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6]);
-            if (productoBD.getGenero() == producto.getGenero() && productoBD.getTitulo() != producto.getTitulo()) {
+            let productoBD = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);                 
+            if ((productoBD.getGenero() == producto.getGenero() || productoBD.getGeneroSecundario() == producto.getGeneroSecundario()) && productoBD.getTitulo() != producto.getTitulo()) {
                 listaRelacionados.push(productoBD);
                 cantidad++;
             }
@@ -36,8 +36,8 @@ export class ProductoService {
         const elementos = archivo.split('\n')
             .map(p => p.replace('\r', '')).map(p => p.split(','));
         for (let i = 0; i < elementos.length; i++) {
-            let producto = new Product(elementos[i][0], elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6]);
-            if (producto.getLink() == id) {
+            let producto = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);
+            if (producto.getNroProducto == id) {
                 return producto;
             }
         }
