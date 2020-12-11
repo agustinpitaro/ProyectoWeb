@@ -1,46 +1,54 @@
-import { Injectable } from '@nestjs/common';
-import { Product } from '../producto';
-import * as fs from 'fs';
-
+import { Producto } from './producto.entity';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository, MoreThan, LessThanOrEqual, LessThan, MoreThanOrEqual } from 'typeorm';
 
 @Injectable()
 export class ProductoService {
-    public getProducto(id: any): Product[] {
-        let productoAndRelated = [];
-        let product = this.getDatos(id);
-        productoAndRelated.push(product);
-        productoAndRelated = productoAndRelated.concat(this.getRelacionados(product));
-        return productoAndRelated;
-    }
 
-    private getRelacionados(producto: Product): Product[] {
-        let listaRelacionados = [];
-        let cantidad = 0;
-        let archivo = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementos = archivo.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
+    constructor(
+        @InjectRepository(Producto) 
+        private readonly productoRepository: Repository<Producto>
+    ){}
+    public async getAll(): Promise<Producto[]>{
+        console.log("Get All productos");
+        try {
+            //Get all
+            //const result: Producto[] = await this.productoRepository.find();
 
-        for (let i = 0; i < elementos.length && cantidad < 3; i++) {
-            let productoBD = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);                 
-            if ((productoBD.getGenero() == producto.getGenero() || productoBD.getGeneroSecundario() == producto.getGeneroSecundario()) && productoBD.getTitulo() != producto.getTitulo()) {
-                listaRelacionados.push(productoBD);
-                cantidad++;
-            }
+            //Select * from e01_producto where (codigo_producto > 100 AND precio <= 200) OR (codigo_producto < 20 AND precio >= 200)
+            const result: Producto[] = await this.productoRepository.find({
+                where:[
+                    {"nro_producto": MoreThan(100), "precio": LessThanOrEqual(200)},
+                    {"nro_producto": LessThan(20), "precio": MoreThanOrEqual(200)}
+                ]
+            });
+            return result
+
+        } catch (error) {
+            throw new HttpException({
+                status: HttpStatus.NOT_FOUND,
+                error: "there is an error in the request, " + error,
+              }, HttpStatus.NOT_FOUND);
         }
-        return listaRelacionados;
-
     }
 
-    private getDatos(id: any): Product {
-        let archivo = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementos = archivo.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        
-        for (let i = 0; i < elementos.length; i++) {
-            let producto = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);
-            if (producto.getNroProducto() == id) {
+    //TYPEORM GET by id
+    public async getById(id: number): Promise<Producto>{
+        console.log("Getting Product id: " + id);
+        try {
+            const producto: Producto = await this.productoRepository.findOne(id);
+            if(producto){
                 return producto;
+            }else{
+                throw new HttpException('No se pudo encontrar el producto', HttpStatus.NOT_FOUND);
             }
+        } catch (error) {
+            console.log(error);
+            throw new HttpException({
+                status: HttpStatus.INTERNAL_SERVER_ERROR,
+                error: "there is an error in the request, " + error,
+              }, HttpStatus.NOT_FOUND);
         }
     }
 }

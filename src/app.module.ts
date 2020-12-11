@@ -17,12 +17,23 @@ import { RegisterController } from './register/register.controller';
 import { RegisterService } from './register/register.service';
 import { LoginController } from './login/login.controller';
 import { LoginService } from './login/login.service';
+import { ProductoModule } from './producto/producto.module';
+import { BibliotecaModule } from './biblioteca/biblioteca.module';
+import { CarritoModule } from './carrito/carrito.module';
+import { CatalogoModule } from './catalogo/catalogo.module';
+import { LoginModule } from './login/login.module';
+import { IndexModule } from './index/index.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),   // <-- path to the static files
-    }),
+    TypeOrmModule.forRoot(),
+    ProductoModule,
+    BibliotecaModule,
+    CarritoModule,
+    CatalogoModule,
+    LoginModule,
+    IndexModule,
   ],
   controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController, RegisterController, LoginController],
   providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService, RegisterService, LoginService],
