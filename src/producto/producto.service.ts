@@ -13,16 +13,7 @@ export class ProductoService {
     public async getAll(): Promise<Producto[]>{
         console.log("Get All productos");
         try {
-            //Get all
-            //const result: Producto[] = await this.productoRepository.find();
-
-            //Select * from e01_producto where (codigo_producto > 100 AND precio <= 200) OR (codigo_producto < 20 AND precio >= 200)
-            const result: Producto[] = await this.productoRepository.find({
-                where:[
-                    {"nro_producto": MoreThan(100), "precio": LessThanOrEqual(200)},
-                    {"nro_producto": LessThan(20), "precio": MoreThanOrEqual(200)}
-                ]
-            });
+            const result: Producto[] = await this.productoRepository.find();
             return result
 
         } catch (error) {

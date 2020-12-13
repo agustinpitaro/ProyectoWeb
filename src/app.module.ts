@@ -25,6 +25,7 @@ import { LoginModule } from './login/login.module';
 import { IndexModule } from './index/index.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
