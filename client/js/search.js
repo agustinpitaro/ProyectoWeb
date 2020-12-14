@@ -6,11 +6,12 @@ predict.appendChild(predictLI);
 
 buscador.addEventListener('keyup', function (e) {
     if (e.code === 'Enter') {
-        let productPage = "product.html?link=" + miniSearch.search(miniSearch.autoSuggest(buscador.value)[0].suggestion, { fuzzy: 0.2 })[0].link;
+        let productPage = "product.html?id=" + miniSearch.search(miniSearch.autoSuggest(buscador.value)[0].suggestion, { fuzzy: 0.2 })[0].nro_producto;
         window.location.href = productPage;
     }
     else {
         if (buscador.value.length > 3 && miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }) ) {
+            debugger;
             predict.style.display = "block";
             let resultado = miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 })[0].titulo;
             predictLI.innerHTML = resultado;
@@ -36,7 +37,8 @@ async function searchBar() {
     miniSearch.addAll(data);
 }
 let miniSearch = new MiniSearch({
+    idField: 'nro_producto',
     fields: ['titulo'], // fields to index for full-text search
-    storeFields: ['link', 'titulo', 'genero'] // fields to return with search results
+    storeFields: ['nro_producto', 'titulo'] // fields to return with search results
 });
 searchBar();

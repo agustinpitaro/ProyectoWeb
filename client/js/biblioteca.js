@@ -1,5 +1,46 @@
+let data;
+let miniSearchBiblioteca = new MiniSearch({
+    idField: 'nro_producto',
+    fields: ['titulo','genero', 'genero_secundario'], // fields to index for full-text search
+    storeFields: ['link','titulo', 'genero', 'genero_secundario', 'imagen', 'sinopsis', 'nro_producto'] // fields to return with search results
+});
+let buscadorPersonal = document.getElementById('buscadorPersonal');
+buscadorPersonal.addEventListener('keyup', function (e) {
+    if (buscadorPersonal.value.length > 3 && miniSearchBiblioteca.autoSuggest(buscadorPersonal.value).length > 0) {
+        debugger;
+        let algo2 = miniSearchBiblioteca.search(miniSearchBiblioteca.autoSuggest(buscadorPersonal.value)[0].suggestion, { fuzzy: 0.2 });
+        loadBiblioteca(algo2);
+    }
+    else if (buscadorPersonal.value.length > 3 && miniSearchBiblioteca.autoSuggest(buscadorPersonal.value).length == 0){
+        loadBiblioteca();
+    }
+    else if (buscadorPersonal.value.length < 3){
+        loadBiblioteca(data);
+    }
+}
+);
+
+let buscadorPersonalm = document.getElementById('buscadorPersonalm');
+buscadorPersonalm.addEventListener('keyup', function (e) {
+    if (buscadorPersonalm.value.length > 3 && miniSearchBiblioteca.autoSuggest(buscadorPersonalm.value).length > 0) {
+        let algo2 = miniSearchBiblioteca.search(miniSearchBiblioteca.autoSuggest(buscadorPersonalm.value)[0].suggestion, { fuzzy: 0.2 });
+        loadBiblioteca(algo2);
+    }
+    else if (buscadorPersonalm.value.length > 3 && miniSearchBiblioteca.autoSuggest(buscadorPersonalm.value).length == 0){
+        loadBiblioteca();
+    }
+    else if (buscadorPersonalm.value.length < 3){
+        loadBiblioteca(data);
+    }
+}
+);
+
+
 function loadBiblioteca(data) {
     let lista = document.getElementById('product-list');
+    while (lista.firstChild) {
+        lista.removeChild(lista.firstChild);
+    }
     let indice = 0;
     data.forEach(producto => {
         //Creo estructura del producto
@@ -18,7 +59,7 @@ function loadBiblioteca(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "product.html?link="+producto.link;
+        aImg.href = "product.html?id=" + producto.nro_producto;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -35,7 +76,7 @@ function loadBiblioteca(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "product.html?link="+producto.link;
+        aTitulo.href = "product.html?id=" + producto.nro_producto;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -62,6 +103,7 @@ function loadBiblioteca(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.type = "button";
         buttonVer.innerText = "VER";
+        buttonVer.href = producto.link;
 
         divColBoton.appendChild(buttonVer);
         divRowBoton.appendChild(divColBoton);
@@ -88,7 +130,8 @@ async function load() {
             'Content-Type': 'application/json',
         },
     });
-    let data = await response.json();
+    data = await response.json();
+    miniSearchBiblioteca.addAll(data);
     loadBiblioteca(data);
 }
 

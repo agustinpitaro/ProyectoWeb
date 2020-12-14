@@ -21,7 +21,7 @@ export class BibliotecaService {
         }
         for(let j = 0; j < nroProductos.length; j++){
             for (let i = 0; i < elementosP.length; i++) {
-                if(nroProductos[j] == elementosP[i][0]){
+                if(nroProductos[j] == elementosP[i][7]){
                     let producto = new Product(parseInt(elementosP[i][0]), elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5],elementosP[i][6], elementosP[i][7]);                 
                     listaProductos.push(producto);
                     break;

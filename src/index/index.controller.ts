@@ -7,16 +7,16 @@ export class IndexController {
 
     @Get('carousel')
     public getProductosCarousel(): Product[]{
-        return this.IndexService.getProductosCarousel();//proximamente va a ser otra funcion mas especifica xd
+        return this.IndexService.getProductosCarousel();
     }
 
     @Get('recientes')
     public getProductosRecientes(): Product[]{
-        return this.IndexService.getProductosRecientes();//proximamente va a ser otra funcion mas especifica xd
+        return this.IndexService.getProductosRecientes();
     }
 
     @Get('populares')
     public getProductosPopulares(): Product[]{
-        return this.IndexService.getProductosPopulares();//proximamente va a ser otra funcion mas especifica xd
+        return this.IndexService.getProductosPopulares();
     }
 }

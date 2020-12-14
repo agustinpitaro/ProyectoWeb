@@ -8,6 +8,7 @@ export class ProductoService {
     public getProducto(id: any): Product[] {
         let productoAndRelated = [];
         let product = this.getDatos(id);
+        console.log(product);
         productoAndRelated.push(product);
         productoAndRelated = productoAndRelated.concat(this.getRelacionados(product));
         return productoAndRelated;
@@ -22,7 +23,7 @@ export class ProductoService {
 
         for (let i = 0; i < elementos.length && cantidad < 3; i++) {
             let productoBD = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);                 
-            if ((productoBD.getGenero() == producto.getGenero() || productoBD.getGeneroSecundario() == producto.getGeneroSecundario()) && productoBD.getTitulo() != producto.getTitulo()) {
+            if ((productoBD.getGenero() == producto.getGenero() || productoBD.getGeneroSecundario() == producto.getGeneroSecundario() || productoBD.getGenero() == producto.getGeneroSecundario()) && productoBD.getTitulo() != producto.getTitulo()) {
                 listaRelacionados.push(productoBD);
                 cantidad++;
             }
@@ -38,7 +39,7 @@ export class ProductoService {
         
         for (let i = 0; i < elementos.length; i++) {
             let producto = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);
-            if (producto.getNroProducto() == id) {
+            if (producto.getNroProducto() == parseInt(id)) {
                 return producto;
             }
         }

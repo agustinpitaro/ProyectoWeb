@@ -7,6 +7,7 @@ function loadProducto(data) {
     let titulo = document.getElementById('titulo');
     let precio = document.getElementById('precio');
     let sinopsis = document.getElementById('sinopsis');
+    let link = data[0].link;
     fullImg.href = data[0].imagen;
     productImg.src = data[0].imagen;
     titulo.innerText = data[0].titulo;
@@ -24,7 +25,7 @@ function loadRelacionados(data) {
         itemImg.src = data[indice].imagen;
         //Agrego enlace a la pagina del producto
         let itemLink = item.querySelector("a");
-        itemLink.href = "product.html?link=" + data[indice].link;
+        itemLink.href = "product.html?id=" + data[indice].nro_producto;
         //Agrego el titulo
         let itemTitle = item.querySelector("h2");
         itemTitle.textContent = data[indice].titulo;
@@ -48,7 +49,7 @@ async function load() {
         let tmparr = paramarr[i].split("=");
         params[tmparr[0]] = tmparr[1];
     }
-    productPage = `/producto/${params["link"]}`;
+    productPage = `/producto/${params["id"]}`;
     let response = await fetch(productPage, {
         method: 'GET',
         headers: {
@@ -57,18 +58,47 @@ async function load() {
     });
     data = await response.json();
     loadProducto(data);
+
+    let dueno = window.sessionStorage.getItem('user');
+    let duenoPage = /biblioteca/ + dueno;
+    let response2 = await fetch(duenoPage, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    biblioteca = await response2.json();
+    if (checkPertenencia(biblioteca)){
+        botonCarrito.removeEventListener('click', cargarProducto);
+    }
+}
+
+function checkPertenencia(biblioteca){
+    let salida = false;
+    biblioteca.forEach(producto => {
+        if (producto.nro_producto == data[0].nro_producto){
+            botonCarrito.innerText = "Ver";
+            botonCarrito.href = data[0].link;
+            salida = true;
+        }
+    });
+    return salida;
+    
 }
 
 function cargarProducto(e) {
+    botonCarrito.innerText = "Agregado al carrito!";
+    botonCarrito.removeEventListener('click', cargarProducto);
+    
     if (window.sessionStorage.getItem('carrito')) {
         let carrito = JSON.parse(window.sessionStorage.getItem('carrito'));
-        let producto = data[0].link;
+        let producto = data[0].nro_producto;
         carrito.push(producto);
         window.sessionStorage.setItem('carrito', JSON.stringify(carrito));
     }
     else {
         let carrito = [];
-        let producto = data[0].link;
+        let producto = data[0].nro_producto;
         carrito.push(producto);
         window.sessionStorage.setItem('carrito', JSON.stringify(carrito));
     }

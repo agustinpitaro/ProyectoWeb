@@ -1,5 +1,7 @@
 "use strict"
 
+let recientes;
+
 function loadRecientes(data) {
     let lista = document.getElementById('recientes');
     data.forEach(producto => {
@@ -62,7 +64,7 @@ function loadRecientes(data) {
 
         let pPrecio = document.createElement('p');
         pPrecio.className = "product-price";
-        pPrecio.innerText = producto.precio;
+        pPrecio.innerText = "$ "+producto.precio;
 
         let divColBoton = document.createElement('div');
         divColBoton.className = "col-auto";
@@ -152,7 +154,7 @@ function loadPopulares(data) {
 
         let pPrecio = document.createElement('p');
         pPrecio.className = "product-price";
-        pPrecio.innerText = producto.precio;
+        pPrecio.innerText = "$ "+producto.precio;
 
         let divColBoton = document.createElement('div');
         divColBoton.className = "col-auto";
@@ -198,7 +200,7 @@ async function load() {
 
 
     if (responseRecientes.ok) {
-        let recientes = await responseRecientes.json();
+        recientes = await responseRecientes.json();
         loadRecientes(recientes);
     }
     else {
