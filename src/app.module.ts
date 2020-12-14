@@ -5,8 +5,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { CarritoService } from './carrito/carrito.service';
 import { CarritoController } from './carrito/carrito.controller';
-import { ProductoController } from './producto/producto.controller';
-import { ProductoService } from './producto/producto.service';
+
 import { IndexController } from './index/index.controller';
 import { IndexService } from './index/index.service';
 import { BibliotecaController } from './biblioteca/biblioteca.controller';
@@ -36,7 +35,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     LoginModule,
     IndexModule,
   ],
-  controllers: [AppController, IndexController, ProductoController,CarritoController, BibliotecaController, CatalogoController, RegisterController, LoginController],
-  providers: [AppService, CarritoService, ProductoService, IndexService, BibliotecaService, CatalogoService, RegisterService, LoginService],
+  controllers: [AppController, IndexController,CarritoController, BibliotecaController, CatalogoController, RegisterController, LoginController],
+  providers: [AppService, CarritoService, IndexService, BibliotecaService, CatalogoService, RegisterService, LoginService],
 })
 export class AppModule {}
