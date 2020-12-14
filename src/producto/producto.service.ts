@@ -5,6 +5,26 @@ import * as fs from 'fs';
 
 @Injectable()
 export class ProductoService {
+    votarProducto(voto: any): boolean {
+        let linea = "\n"+ voto.username + "," +  voto.producto + "," + voto.puntaje;
+        console.log(linea);
+        return true;
+    }
+
+    public getPuntaje(nro_producto: any): Number {
+        let contador = 0;
+        let salida = 0;
+        let biblioteca = fs.readFileSync('resources/biblioteca.csv', 'utf8');
+        const elementosB = biblioteca.split('\n')
+            .map(p => p.replace('\r', '')).map(p => p.split(','));
+        for (let i = 0; i < elementosB.length; i++) {
+            if (nro_producto == elementosB[i][1] && elementosB[i][2] != "-1") {
+                salida += parseInt(elementosB[i][2]);
+                contador++;
+            }
+        }
+        return salida/contador;
+    }
     public getProducto(id: any): Product[] {
         let productoAndRelated = [];
         let product = this.getDatos(id);

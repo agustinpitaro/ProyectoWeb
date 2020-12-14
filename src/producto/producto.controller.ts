@@ -10,4 +10,12 @@ export class ProductoController {
     public getProduct(@Param('id') id): Product[]{
         return this.productoService.getProducto(id);
     }
+    @Get('/:nro_producto/puntaje')
+    public getPuntaje(@Param('nro_producto') nro_producto): Number{
+        return this.productoService.getPuntaje(nro_producto);
+    }
+    @Post()
+    public votarProducto(@Body() voto: any):boolean{
+        return this.productoService.votarProducto(voto);
+    }
 }

@@ -21,7 +21,7 @@ function loadRecientes(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "product.html?link="+producto.link;
+        aImg.href = "product.html?id=" + producto.nro_producto;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -39,7 +39,7 @@ function loadRecientes(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "product.html?link="+producto.link;
+        aTitulo.href = "product.html?id=" + producto.nro_producto;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -73,7 +73,7 @@ function loadRecientes(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
-        buttonVer.href = "product.html?link="+producto.link;
+        buttonVer.href = "product.html?id=" + producto.nro_producto;
 
         divColBoton.appendChild(buttonVer);
         divColPrecio.appendChild(pPrecio);
@@ -111,7 +111,7 @@ function loadPopulares(data) {
 
         let aImg = document.createElement('a');
         aImg.className = "product-image";
-        aImg.href = "product.html?link="+producto.link;
+        aImg.href = "product.html?id=" + producto.nro_producto;
 
         let srcImg = document.createElement('img');
         srcImg.src = producto.imagen;
@@ -129,7 +129,7 @@ function loadPopulares(data) {
 
         let h2Titulo = document.createElement('h2');
         let aTitulo = document.createElement('a');
-        aTitulo.href = "product.html?link="+producto.link;
+        aTitulo.href = "product.html?id=" + producto.nro_producto;
         aTitulo.innerText = producto.titulo;
 
         h2Titulo.appendChild(aTitulo);
@@ -163,7 +163,7 @@ function loadPopulares(data) {
         buttonVer.className = "btn btn-light";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
-        buttonVer.href = "product.html?link="+producto.link;
+        buttonVer.href = "product.html?id=" + producto.nro_producto;
 
         divColBoton.appendChild(buttonVer);
         divColPrecio.appendChild(pPrecio);

@@ -1,5 +1,6 @@
 let botonCarrito = document.getElementById('carrito-button');
 botonCarrito.addEventListener('click', cargarProducto);
+let botonPuntaje;
 
 function loadProducto(data) {
     let fullImg = document.getElementById('fullImg');
@@ -7,16 +8,19 @@ function loadProducto(data) {
     let titulo = document.getElementById('titulo');
     let precio = document.getElementById('precio');
     let sinopsis = document.getElementById('sinopsis');
+    let puntaje = document.getElementById('puntaje');
     let link = data[0].link;
     fullImg.href = data[0].imagen;
     productImg.src = data[0].imagen;
     titulo.innerText = data[0].titulo;
     precio.innerText = "$ " + data[0].precio;
     sinopsis.innerHTML = data[0].sinopsis;
+    puntaje.innerText = Math.round(rating)+ "/10";
     loadRelacionados(data);
 }
 
-function loadRelacionados(data) {
+
+async function loadRelacionados(data) {
     let related = document.querySelectorAll("div.related");
     let indice = 1;
     related.forEach(item => {
@@ -49,7 +53,16 @@ async function load() {
         let tmparr = paramarr[i].split("=");
         params[tmparr[0]] = tmparr[1];
     }
-    productPage = `/producto/${params["id"]}`;
+    productoid = params["id"];
+    productPage = /producto/+ productoid;
+
+    let response3 = await fetch("/producto/"+productoid+"/puntaje", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    rating = await response3.json();
     let response = await fetch(productPage, {
         method: 'GET',
         headers: {
@@ -77,8 +90,32 @@ function checkPertenencia(biblioteca){
     let salida = false;
     biblioteca.forEach(producto => {
         if (producto.nro_producto == data[0].nro_producto){
+            let ratingDiv = document.getElementById('rating');
+            let form = document.createElement('form');
+            let label = document.createElement('label');
+            label.for = "puntaje";
+            label.innerText = "Puntacion: (Entre 1 y 10):";
+            let input = document.createElement('input');
+            input.type = "number";
+            input.id = "puntajeVoto";
+            input.min = "1";
+            input.max = "10";
+            let button = document.createElement('button');
+            button.className = "btn btn-primary";
+            button.id = "puntaje-button";
+            button.type = "button";
+            button.innerText = "Votar!";
+            form.appendChild(label);
+            form.appendChild(input);
+            form.appendChild(button);
+            ratingDiv.appendChild(form);
+
+            botonPuntaje = document.getElementById('puntaje-button');
+            botonPuntaje.addEventListener('click', cargarPuntaje);
+            
             botonCarrito.innerText = "Ver";
             botonCarrito.href = data[0].link;
+
             salida = true;
         }
     });
@@ -103,5 +140,26 @@ function cargarProducto(e) {
         window.sessionStorage.setItem('carrito', JSON.stringify(carrito));
     }
 }
+
+async function cargarPuntaje(e){
+    let voto = document.getElementById('puntajeVoto').value;
+    let user = window.sessionStorage.getItem('user');
+    let votacion = {
+        username: user,
+        producto: data[0].nro_producto,
+        puntaje: voto
+    }
+    let respuesta = await fetch('/producto/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(votacion),
+    });
+
+
+}
+let biblioteca;
 let data;
+let rating;
 load();
