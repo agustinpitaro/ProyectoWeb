@@ -7,8 +7,6 @@ import { CarritoService } from './carrito/carrito.service';
 import { CarritoController } from './carrito/carrito.controller';
 import { IndexController } from './index/index.controller';
 import { IndexService } from './index/index.service';
-import { BibliotecaController } from './biblioteca/biblioteca.controller';
-import { BibliotecaService } from './biblioteca/biblioteca.service';
 import { CatalogoController } from './catalogo/catalogo.controller';
 import { CatalogoService } from './catalogo/catalogo.service';
 import { RegisterController } from './register/register.controller';
@@ -17,6 +15,8 @@ import { LoginController } from './login/login.controller';
 import { LoginService } from './login/login.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductoModule } from './producto/producto.module';
+import { AuthModule } from './auth/auth.module';
+import { BibliotecaModule } from './biblioteca/biblioteca.module';
 
 @Module({
   imports: [
@@ -25,8 +25,10 @@ import { ProductoModule } from './producto/producto.module';
     }),
     TypeOrmModule.forRoot(),
     ProductoModule,
+    AuthModule,
+    BibliotecaModule,
   ],
-  controllers: [AppController, IndexController, CarritoController, BibliotecaController, CatalogoController, RegisterController, LoginController],
-  providers: [AppService, CarritoService, IndexService, BibliotecaService, CatalogoService, RegisterService, LoginService],
+  controllers: [AppController, IndexController, CarritoController, CatalogoController, RegisterController, LoginController],
+  providers: [AppService, CarritoService, IndexService, CatalogoService, RegisterService, LoginService],
 })
 export class AppModule { }
