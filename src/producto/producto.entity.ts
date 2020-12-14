@@ -63,14 +63,14 @@ export class Producto {
         this.genero = genero;
     }
     @Column()
-    private genero_secun: string;
+    private genero_secundario: string;
 
     public getGeneroSecun(): string {
-        return this.genero_secun;
+        return this.genero_secundario;
     }
 
-    public setGeneroSecun(genero_secun: string): void {
-        this.genero_secun = genero_secun;
+    public setGeneroSecun(genero_secundario: string): void {
+        this.genero_secundario = genero_secundario;
     }
     @Column()
     private link: string;
@@ -83,13 +83,13 @@ export class Producto {
         this.link = link;
     }
 
-    public constructor(titulo?:string, sinopsis?:string, imagen?:string, precio?:number, genero?:string, genero_secun?:string, link?:string){
+    public constructor(titulo?:string, sinopsis?:string, imagen?:string, precio?:number, genero?:string, genero_secundario?:string, link?:string){
         this.titulo = titulo;
         this.sinopsis = sinopsis;
         this.imagen = imagen;
         this.precio = precio;
         this.genero = genero;
-        this.genero_secun = genero_secun;
+        this.genero_secundario = genero_secundario;
         this.link = link;
     }
 

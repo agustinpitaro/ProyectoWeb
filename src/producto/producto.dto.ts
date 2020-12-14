@@ -4,6 +4,6 @@ export class ProductoDTO {
    readonly imagen: string;
    readonly precio: number;
    readonly genero: string;
-   readonly genero_secun: string;
+   readonly genero_secundario: string;
    readonly link: string;
 }
