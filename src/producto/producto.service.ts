@@ -1,17 +1,93 @@
-import { Injectable } from '@nestjs/common';
-import { Product } from '../producto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import * as fs from 'fs';
-
+import { Producto } from './producto.entity';
+import { Not, Repository } from 'typeorm';
 
 @Injectable()
 export class ProductoService {
-    votarProducto(voto: any): boolean {
-        let linea = "\n"+ voto.username + "," +  voto.producto + "," + voto.puntaje;
+    constructor(
+        @InjectRepository(Producto)
+        private readonly productoRepository: Repository<Producto>
+    ) { }
+
+    public async getAll(): Promise<Producto[]> {
+        console.log("Get All productos");
+        try {
+            const result: Producto[] = await this.productoRepository.find();
+            return result;
+
+        } catch (error) {
+            throw new HttpException({
+                status: HttpStatus.NOT_FOUND,
+                error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
+        }
+    }
+    //TYPEORM GET by id
+    public async getById(id: number): Promise<Producto> {
+        console.log("Getting Product id: " + id);
+        try {
+            let producto: Producto = await this.productoRepository.findOne(id);
+            if (producto) {
+                return producto;
+            } else {
+                throw new HttpException('No se pudo encontrar el producto', HttpStatus.NOT_FOUND);
+            }
+        } catch (error) {
+            console.log(error);
+            throw new HttpException({
+                status: HttpStatus.INTERNAL_SERVER_ERROR,
+                error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public async getProducto(id: any): Promise<Producto[]> {
+        let productoAndRelated = [];
+        let producto = await this.getById(id);
+        productoAndRelated.push(producto);
+        productoAndRelated = productoAndRelated.concat(await this.getRelacionados(producto));
+        console.log(productoAndRelated);
+        return productoAndRelated;
+    }
+
+    private async getRelacionados(producto: Producto): Promise<Producto[]> {
+        try {
+            let productoPrincipal = await producto;
+            let productosRelacionados: Producto[] = await this.productoRepository.find({
+                where: [
+                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero": productoPrincipal.getGenero()},
+                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero": productoPrincipal.getGeneroSecundario()},
+                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero_secundario": productoPrincipal.getGenero()},
+                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero_secundario": productoPrincipal.getGeneroSecundario()},
+                ],
+                take : 3,
+            });
+            if (productosRelacionados) {
+                return productosRelacionados;
+            } else {
+                throw new HttpException('No se pudo encontrar el producto', HttpStatus.NOT_FOUND);
+            }
+        } catch (error) {
+            console.log(error);
+            throw new HttpException({
+                status: HttpStatus.INTERNAL_SERVER_ERROR,
+                error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
+
+    public votarProducto(voto: any): boolean { //ESCRIBIR EN BIBLIOTECA
+        let linea = "\n" + voto.username + "," + voto.producto + "," + voto.puntaje;
         console.log(linea);
         return true;
     }
 
-    public getPuntaje(nro_producto: any): Number {
+    public getPuntaje(nro_producto: any): Number { //LEER DE BIBLIOTECA
         let contador = 0;
         let salida = 0;
         let biblioteca = fs.readFileSync('resources/biblioteca.csv', 'utf8');
@@ -23,45 +99,6 @@ export class ProductoService {
                 contador++;
             }
         }
-        return salida/contador;
-    }
-    public getProducto(id: any): Product[] {
-        let productoAndRelated = [];
-        let product = this.getDatos(id);
-        console.log(product);
-        productoAndRelated.push(product);
-        productoAndRelated = productoAndRelated.concat(this.getRelacionados(product));
-        return productoAndRelated;
-    }
-
-    private getRelacionados(producto: Product): Product[] {
-        let listaRelacionados = [];
-        let cantidad = 0;
-        let archivo = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementos = archivo.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-
-        for (let i = 0; i < elementos.length && cantidad < 3; i++) {
-            let productoBD = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);                 
-            if ((productoBD.getGenero() == producto.getGenero() || productoBD.getGeneroSecundario() == producto.getGeneroSecundario() || productoBD.getGenero() == producto.getGeneroSecundario()) && productoBD.getTitulo() != producto.getTitulo()) {
-                listaRelacionados.push(productoBD);
-                cantidad++;
-            }
-        }
-        return listaRelacionados;
-
-    }
-
-    private getDatos(id: any): Product {
-        let archivo = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementos = archivo.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        
-        for (let i = 0; i < elementos.length; i++) {
-            let producto = new Product(parseInt(elementos[i][0]), elementos[i][1], elementos[i][2], elementos[i][3], elementos[i][4], elementos[i][5],elementos[i][6], elementos[i][7]);
-            if (producto.getNroProducto() == parseInt(id)) {
-                return producto;
-            }
-        }
+        return salida / contador;
     }
 }

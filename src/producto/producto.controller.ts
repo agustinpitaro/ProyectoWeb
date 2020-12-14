@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { Product } from '../producto';
+import { Producto } from './producto.entity';
 import { ProductoService } from './producto.service';
 
 @Controller('producto')
@@ -7,7 +7,7 @@ export class ProductoController {
     constructor(private productoService: ProductoService) { }
 
     @Get(':id')
-    public getProduct(@Param('id') id): Product[]{
+    public getProduct(@Param('id') id): Promise<Producto[]>{
         return this.productoService.getProducto(id);
     }
     @Get('/:nro_producto/puntaje')

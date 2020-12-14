@@ -55,7 +55,6 @@ async function load() {
     }
     productoid = params["id"];
     productPage = /producto/ + productoid;
-    debugger;
     let response3 = await fetch("/producto/" + productoid + "/puntaje", {
         method: 'GET',
         headers: {
@@ -70,6 +69,7 @@ async function load() {
         },
     });
     data = await response.json();
+    debugger;
     loadProducto(data);
     let dueno = window.sessionStorage.getItem('user');
     let duenoPage = /biblioteca/ + dueno;
