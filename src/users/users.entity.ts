@@ -31,11 +31,9 @@ export class Usuario {
         this.password = password;
     }
 
-    public constructor (username?:string, password?:string/*, biblioteca?:Biblioteca[], facturas?:Factura[]*/){
+    public constructor (username?:string, password?:string){
         this.username = username;
         this.password = password;
-        /*this.biblioteca = biblioteca;
-        this.facturas = facturas;*/
     }
 
     public getNroUsuario():number{
@@ -44,10 +42,7 @@ export class Usuario {
     public setNroUsuario(nro_usuario:number){
         this.nro_usuario = nro_usuario;
     }
-
-    public biblioteca: Biblioteca[];
-    public facturas: Factura[];
-    /*
+    
     @OneToMany((type) => Biblioteca, biblioteca => biblioteca.user)
     public biblioteca: Biblioteca[];
 
@@ -61,5 +56,5 @@ export class Usuario {
     public getFacturas() : Factura[]{
         return this.facturas;
     }
-    */
+    
 }

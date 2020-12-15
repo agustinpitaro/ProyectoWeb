@@ -24,12 +24,12 @@ export class CarritoService {
         for (let i in compra.compra) {
             let producto = await this.ProductoRepository.findOne(compra.compra[i]);
             let linea = new Factura(usuario.getNroUsuario(), producto.getNroProducto(), "15/12/2020",
-                producto.getPrecio(), producto.getPrecio() * 0.21, producto.getPrecio() * 1.21, producto, usuario);
+                producto.getPrecio(), producto.getPrecio() * 0.21, producto.getPrecio() * 1.21);
             console.log(linea);
-            let propiedad = new Biblioteca(producto.getNroProducto(),usuario.getNroUsuario(),0, producto, usuario);
+            let propiedad = new Biblioteca(producto.getNroProducto(),usuario.getNroUsuario(),0);
             console.log(propiedad);
             this.FacturaRepository.save(linea);
-            //this.BibliotecaRepository.save(propiedad);
+            this.BibliotecaRepository.save(propiedad);
         }
         return true;
     }

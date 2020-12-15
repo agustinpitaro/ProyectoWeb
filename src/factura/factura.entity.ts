@@ -8,7 +8,7 @@ export class Factura {
     @Column()
     private nro_usuario: number;
 
-    @ManyToOne(() => Usuario, user => user.nro_usuario)
+    @ManyToOne((type) => Usuario, user => user.facturas)
     @JoinColumn({ name: 'nro_factura' })
     public user: Usuario;
 
@@ -17,11 +17,13 @@ export class Factura {
 
     @Column()
     public nro_producto: number;
+
     public getNro_producto(): number{
         return this.nro_producto;
     }
 
     @ManyToOne(() => Producto, producto => producto.nro_producto)
+    @JoinColumn({ name: 'nro_factura' })
     public producto: Producto;
 
     @Column()
@@ -68,15 +70,13 @@ export class Factura {
         this.total_con_iva = total_con_iva;
     }
 
-    public constructor(nro_usuario?: number, nro_producto?:number, fecha?: string, total_sin_iva?: number, iva?: number, total_con_iva?: number, producto? : Producto, user?: Usuario) {
+    public constructor(nro_usuario?: number, nro_producto?:number, fecha?: string, total_sin_iva?: number, iva?: number, total_con_iva?: number) {
         this.nro_producto = nro_producto;
         this.nro_usuario = nro_usuario;
         this.fecha = fecha;
         this.total_sin_iva = total_sin_iva;
         this.iva = iva;
         this.total_con_iva = total_con_iva;
-        this.producto = producto;
-        this.user = user;
     }
 
     public getNroUsuario(): number {
