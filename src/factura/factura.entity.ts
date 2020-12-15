@@ -1,22 +1,30 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { DetalleFactura } from 'src/detalle-factura/detalle-factura.entity';
+import { Usuario } from 'src/users/users.entity';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('FACTURA')
 export class Factura {
     
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     private nro_usuario: number;
+
+    @ManyToOne(() => Usuario, user => user.getNroUsuario())
+    private user : Usuario;
 
     @PrimaryGeneratedColumn()
     private nro_factura: number;
 
-    @Column()
-    private fecha: DateConstructor ;
+    @OneToMany(() => DetalleFactura, detallefactura => detallefactura.getNroFactura())
+    detallefactura: DetalleFactura[];
 
-    public getFecha(): DateConstructor {
+    @Column()
+    private fecha: string ;
+
+    public getFecha(): string {
         return this.fecha;
     }
 
-    public setFecha(fecha: DateConstructor) {
+    public setFecha(fecha: string) {
         this.fecha = fecha;
     }
 
@@ -53,7 +61,8 @@ export class Factura {
         this.total_con_iva = total_con_iva;
     }
 
-    public constructor (fecha?:DateConstructor, total_sin_iva?:number, iva?:number, total_con_iva?:number){
+    public constructor (nro_usuario?:number, fecha?:string, total_sin_iva?:number, iva?:number, total_con_iva?:number){
+        this.nro_usuario = nro_usuario;
         this.fecha = fecha;
         this.total_sin_iva = total_sin_iva;
         this.iva = iva;

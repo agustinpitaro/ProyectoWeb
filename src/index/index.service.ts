@@ -8,8 +8,6 @@ import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
 @Injectable()
 export class IndexService {
     constructor(
-        @InjectRepository(Biblioteca)
-        private readonly bibliotecaRepository: Repository<Biblioteca>,
         @InjectRepository(Producto)
         private readonly productoRepository: Repository<Producto>
     ) { }

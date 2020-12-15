@@ -1,12 +1,13 @@
 import { Producto } from 'src/producto/producto.entity';
 import { Factura } from 'src/factura/factura.entity';
-import { Usuario } from 'src/users/users.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('DETALLE_FACTURA')
 export class DetalleFactura {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
+    private nro_factura:number;
+
     @ManyToOne(() => Factura, factura => factura.getNroFactura())
     private factura : Factura;
 
@@ -14,6 +15,8 @@ export class DetalleFactura {
     private nro_item: number;
 
     @PrimaryGeneratedColumn()
+    private nro_producto : number;
+
     @ManyToOne(() => Producto, producto => producto.getNroProducto())
     private producto : Producto;
 

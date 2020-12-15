@@ -1,4 +1,5 @@
 import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
+import { Factura } from 'src/factura/factura.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('USUARIO')
@@ -44,4 +45,7 @@ export class Usuario {
 
     @OneToMany(() => Biblioteca, biblioteca => biblioteca.getNroUsuario())
     biblioteca: Biblioteca[];
+
+    @OneToMany(() => Factura, factura => factura.getNroUsuario())
+    factura: Factura[];
 }
