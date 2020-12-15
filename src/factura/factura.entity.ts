@@ -6,15 +6,15 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedCo
 export class Factura {
     
     @PrimaryColumn()
-    private nro_usuario: number;
+    public nro_usuario: number;
 
-    @ManyToOne(() => Usuario, user => user.getNroUsuario())
+    @ManyToOne(() => Usuario, user => user.nro_usuario)
     private user : Usuario;
 
     @PrimaryGeneratedColumn()
-    private nro_factura: number;
+    public nro_factura: number;
 
-    @OneToMany(() => DetalleFactura, detallefactura => detallefactura.getNroFactura())
+    @OneToMany(() => DetalleFactura, detallefactura => detallefactura.nro_factura)
     detallefactura: DetalleFactura[];
 
     @Column()

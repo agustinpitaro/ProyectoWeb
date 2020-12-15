@@ -6,18 +6,18 @@ import { Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeor
 export class DetalleFactura {
 
     @PrimaryColumn()
-    private nro_factura:number;
+    public nro_factura:number;
 
-    @ManyToOne(() => Factura, factura => factura.getNroFactura())
+    @ManyToOne(() => Factura, factura => factura.nro_factura)
     private factura : Factura;
 
     @PrimaryGeneratedColumn()
-    private nro_item: number;
+    public nro_item: number;
 
-    @PrimaryGeneratedColumn()
-    private nro_producto : number;
+    @PrimaryColumn()
+    public nro_producto : number;
 
-    @ManyToOne(() => Producto, producto => producto.getNroProducto())
+    @ManyToOne(() => Producto, producto => producto.nro_producto)
     private producto : Producto;
 
    
@@ -31,18 +31,18 @@ export class DetalleFactura {
     }
 
     public getNroProducto():number{
-        return this.producto.getNroProducto();
+        return this.nro_producto;
     }
     
     public setNroProducto(nro_producto: number){
-        this.producto.setNroProducto(nro_producto);
+        this.nro_producto = nro_producto;
     }
 
     public getNroFactura():number{
-        return this.factura.getNroFactura();
+        return this.nro_factura;
     }
     
     public setNroFactura(nro_factura: number){
-        this.factura.setNroFactura(nro_factura);
+        this.nro_factura = nro_factura;
     }
 }

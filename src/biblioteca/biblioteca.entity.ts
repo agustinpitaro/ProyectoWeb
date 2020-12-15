@@ -5,15 +5,15 @@ import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from
 @Entity('BIBLIOTECA')
 export class Biblioteca {
     @PrimaryColumn()
-    private nro_producto : number;
+    public nro_producto : number;
 
     @PrimaryColumn()
-    private nro_usuario : number;
+    public nro_usuario : number;
 
-    @ManyToOne(() => Usuario, user => user.getNroUsuario())
+    @ManyToOne(() => Usuario, user => user.nro_usuario)
     private user : Usuario;
 
-    @ManyToOne(() => Producto, producto => producto.getNroProducto())
+    @ManyToOne(() => Producto, producto => producto.nro_producto)
     private producto : Producto;
 
     @Column()

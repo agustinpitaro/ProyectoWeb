@@ -6,7 +6,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 export class Usuario {
     
     @PrimaryGeneratedColumn()
-    private nro_usuario: number;
+    public nro_usuario: number;
 
 
     @Column()
@@ -43,9 +43,9 @@ export class Usuario {
         this.nro_usuario = nro_usuario;
     }
 
-    @OneToMany(() => Biblioteca, biblioteca => biblioteca.getNroUsuario())
+    @OneToMany(() => Biblioteca, biblioteca => biblioteca.nro_usuario)
     biblioteca: Biblioteca[];
 
-    @OneToMany(() => Factura, factura => factura.getNroUsuario())
+    @OneToMany(() => Factura, factura => factura.nro_usuario)
     factura: Factura[];
 }

@@ -5,12 +5,12 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 export class Producto {
 
     @PrimaryGeneratedColumn()
-    private nro_producto: number;
+    public nro_producto: number;
 
     @Column()
     private titulo: string;
 
-    @OneToMany(() => Biblioteca, biblioteca => biblioteca.getNroProducto())
+    @OneToMany(() => Biblioteca, biblioteca => biblioteca.nro_producto)
     biblioteca: Biblioteca[];
 
     public getTitulo(): string {
