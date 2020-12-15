@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as fs from 'fs';
 import { Producto } from './producto.entity';
 import { Not, Repository } from 'typeorm';
 import { Biblioteca } from 'src/biblioteca/biblioteca.entity';

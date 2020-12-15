@@ -8,8 +8,8 @@ import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
-      Producto,
-      Biblioteca
+      Biblioteca,
+      Producto
     ])
   ],
   controllers: [ProductoController],
