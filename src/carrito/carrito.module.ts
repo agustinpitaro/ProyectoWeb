@@ -12,6 +12,7 @@ import { CarritoService } from './carrito.service';
 @Module({
     imports: [
       TypeOrmModule.forFeature([
+      Biblioteca,
       Factura,
       Producto,
       Usuario

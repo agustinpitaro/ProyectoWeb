@@ -10,10 +10,10 @@ export class Biblioteca {
     @PrimaryColumn()
     public nro_usuario : number;
 
-    @ManyToOne(() => Usuario, user => user.biblioteca)
+    @ManyToOne(() => Usuario, user => user.nro_usuario)
     public user : Usuario;
 
-    @ManyToOne(() => Producto, producto => producto.biblioteca)
+    @ManyToOne(() => Producto, producto => producto.nro_producto)
     public producto : Producto;
 
     @Column()
@@ -27,10 +27,12 @@ export class Biblioteca {
         this.puntaje = puntaje;
     }
 
-    public constructor (nro_producto?:number, nro_usuario?:number,puntaje?:number){
+    public constructor (nro_producto?:number, nro_usuario?:number,puntaje?:number, producto?:Producto, user?:Usuario){
         this.nro_producto = nro_producto;
         this.nro_usuario = nro_usuario;
         this.puntaje = puntaje;
+        this.producto = producto;
+        this.user = user;
     }
 
     public getNroProducto():number{

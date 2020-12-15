@@ -18,11 +18,9 @@ export class UsersService {
         this.users = await this.usuarioRepository.find();
     }
     public async findOne(username: string): Promise<User | undefined> {
-        console.log("findone");
         return this.users.find(user => user.getUsername() === username);
     }  
     public async getUsuarios(): Promise<Usuario[]> {
-        console.log("Get All clientes");
         try {
             const result= await this.usuarioRepository.find({
                 relations: ["facturas"]

@@ -11,11 +11,26 @@ export class Producto {
     @Column()
     private titulo: string;
 
-    @OneToMany(() => Biblioteca, biblioteca => biblioteca.producto)
+   /* @OneToMany(() => Biblioteca, biblioteca => biblioteca.producto)
     public biblioteca: Biblioteca[];
 
     @OneToMany(() => Factura, factura => factura.producto)
-    public facturas: Factura[];
+    public facturas: Factura[];*/
+    
+    public biblioteca: Biblioteca[];
+    public facturas: Factura[]
+    
+    public constructor(titulo?: string, sinopsis?: string, imagen?: string, precio?: number, genero?: string, genero_secundario?: string, link?: string/*, biblioteca?:Biblioteca[], facturas?:Factura[]*/) {
+        this.titulo = titulo;
+        this.sinopsis = sinopsis;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.genero = genero;
+        this.genero_secundario = genero_secundario;
+        this.link = link;/*
+        this.biblioteca = biblioteca;
+        this.facturas = facturas;*/
+    }
 
     public getTitulo(): string {
         return this.titulo;
@@ -88,16 +103,6 @@ export class Producto {
     }
 
     public setLink(link: string): void {
-        this.link = link;
-    }
-
-    public constructor(titulo?: string, sinopsis?: string, imagen?: string, precio?: number, genero?: string, genero_secundario?: string, link?: string) {
-        this.titulo = titulo;
-        this.sinopsis = sinopsis;
-        this.imagen = imagen;
-        this.precio = precio;
-        this.genero = genero;
-        this.genero_secundario = genero_secundario;
         this.link = link;
     }
 
