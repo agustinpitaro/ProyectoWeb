@@ -6,10 +6,9 @@ import { CarritoService} from './carrito.service';
 export class CarritoController {
 
         constructor(private carritoService: CarritoService) { }
-        @UseGuards(JwtAuthGuard)
         @Post()
-        public comprarProducto(@Body() compra: any):boolean{
-            return this.carritoService.confirmarCompra(compra);
+        public async comprarProducto(@Body() compra: any):Promise<boolean>{
+            return await this.carritoService.confirmarCompra(compra);
         }
     }
     

@@ -9,32 +9,15 @@ import { Repository } from 'typeorm';
 export class LoginService {
     constructor(
         private usersService: UsersService,
+        @InjectRepository(Usuario)
+        private readonly UsuarioRepository: Repository<Usuario>,
     ) { }
 
-    public checkLogin(userLogged){
-
-        console.log(userLogged);
-        let result = this.usersService.findOne(userLogged.getUsername());
-        
-        if (result) {
-            return "token123";
-        }else{
-            throw new HttpException({status: HttpStatus.NOT_FOUND,}, HttpStatus.NOT_FOUND);
-        }
-
-    }
-
-    /*
     public async login(userInfo: any): Promise<boolean> {
-        let userRegister = new Usuario(userInfo.name, userInfo.password);
-        if (await this.usuarioRepository.find({
-            where: [
-                { "username": userInfo.name, "password": userInfo.password },
-            ]
-        })) {
+        let userLogged = new Usuario(userInfo.name, userInfo.password);
+        let result = await this.UsuarioRepository.findOne(userLogged);
+        if (result)
             return true;
-        }
         return false;
     }
-    */
 }

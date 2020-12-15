@@ -7,7 +7,6 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class BibliotecaController {
     constructor(private BibliotecaService: BibliotecaService) { }
 
-    @UseGuards(JwtAuthGuard)
     @Get(':id')
     public getProductosSegunUsuario(@Param('id') id): Promise<Producto[]>{
         return this.BibliotecaService.getProductosUser(id);

@@ -18,19 +18,11 @@ export class UsersService {
         this.users = await this.usuarioRepository.find();
     }
     public async findOne(username: string): Promise<User | undefined> {
+        console.log("findone");
         return this.users.find(user => user.getUsername() === username);
-    }
-
-    
-    public async getUsuarios(token): Promise<Usuario[]> {
+    }  
+    public async getUsuarios(): Promise<Usuario[]> {
         console.log("Get All clientes");
-
-        if (!token.token) {
-            throw new HttpException({
-                status: HttpStatus.UNAUTHORIZED,
-            }, HttpStatus.UNAUTHORIZED);
-        }
-
         try {
             const result= await this.usuarioRepository.find({
                 relations: ["facturas"]
@@ -45,10 +37,9 @@ export class UsersService {
         }
     }
 
-    public async getByCliente(id: number): Promise<any> {
+    public async getByUsername(id: number): Promise<Usuario> {
         try {
-
-            const user = await this.usuarioRepository.findOne(id);
+            const user = await this.usuarioRepository.findOne({where:[{"username" : id}]});
             return user;
 
         } catch (error) {

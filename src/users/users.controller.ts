@@ -8,12 +8,12 @@ export class UsersController {
         private readonly UsersService: UsersService) { }
 
     @Post("get-all")
-    public getUsuarios(@Body() token ): Promise<Usuario[]>{
-        return this.UsersService.getUsuarios(token);
+    public getUsuarios(): Promise<Usuario[]>{
+        return this.UsersService.getUsuarios();
     }
 
     @Get(":id")
-    public getByCliente(@Param("id") id): Promise<any[]>{
-        return this.UsersService.getByCliente(id);
+    public getByUsername(@Param("id") id): Promise<Usuario>{
+        return this.UsersService.getByUsername(id);
     }
 }
