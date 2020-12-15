@@ -1,34 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../User';
-import * as fs from 'fs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Usuario } from 'src/users/users.entity';
 
 @Injectable()
 export class RegisterService {
-    public register(userInfo: any): boolean {
-        let userRegister = new User(userInfo.name, userInfo.password);
-        let users = this.getUsers();
-        for (const user of users) {
-            if (user.getName() == userRegister.getName()) {
-                return false;
-            }
-        }
-        fs.appendFileSync("resources/users.csv",
-                    "\n"+
-                    userRegister.getName() + ","+
-                    userRegister.getPassword());
-        return true;
-    }
+    constructor(
+        @InjectRepository(Usuario)
+        private readonly usuarioRepository: Repository<Usuario>
+    ) { }
 
-    private getUsers(): User[] {
-        let archivo = fs.readFileSync('resources/users.csv', 'utf8');
-        const elementos = archivo.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        let listaUsers: User[] = [];
-        for (let i = 0; i < elementos.length; i++) {
-            let user = new User(elementos[i][0], elementos[i][1]);
-            listaUsers.push(user);
+    public async register(userInfo: any): Promise<boolean> {
+        let userRegister = new Usuario(userInfo.name, userInfo.password );
+        if (await this.usuarioRepository.findOne(userInfo.name)) {
+            return false;
         }
-        return listaUsers;
+        this.usuarioRepository.save(userRegister);
+        return true;
     }
 
 }

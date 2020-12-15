@@ -1,32 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '../User';
 import * as fs from 'fs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Usuario } from 'src/users/users.entity';
+import { Repository } from 'typeorm';
 
 
 @Injectable()
 export class LoginService {
-    public login(userInfo: any): boolean {
-        let userLogged = new User(userInfo.name, userInfo.password);
-        let users = this.getUsers();
-        for (const user of users) {
-            if(user.getName() == userLogged.getName()
-                && user.getPassword() == userLogged.getPassword()){
-                    return true;
-            }
+    constructor(
+        @InjectRepository(Usuario)
+        private readonly usuarioRepository: Repository<Usuario>
+    ) { }
+
+
+    public async login(userInfo: any): Promise<boolean> {
+        let userRegister = new Usuario(userInfo.name, userInfo.password);
+        if (await this.usuarioRepository.find({
+            where: [
+                { "username": userInfo.name, "password": userInfo.password },
+            ]
+        })) {
+            return true;
         }
         return false;
     }
-
-    private getUsers(): User[]{
-        let archivo = fs.readFileSync('resources/users.csv', 'utf8');
-        const elementos = archivo.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        let listaUsers : User[] = [];
-        for (let i = 0; i < elementos.length; i++) {
-            let user = new User(elementos[i][0],elementos[i][1]);
-            listaUsers.push(user);
-        }
-        return listaUsers;
-    }
-
 }

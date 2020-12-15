@@ -24,7 +24,7 @@ export class ProductoService {
             }, HttpStatus.NOT_FOUND);
         }
     }
-    //TYPEORM GET by id
+
     public async getById(id: number): Promise<Producto> {
         console.log("Getting Product id: " + id);
         try {
@@ -77,9 +77,7 @@ export class ProductoService {
             }, HttpStatus.NOT_FOUND);
         }
     }
-
-
-
+    
 
     public votarProducto(voto: any): boolean { //ESCRIBIR EN BIBLIOTECA
         let linea = "\n" + voto.username + "," + voto.producto + "," + voto.puntaje;

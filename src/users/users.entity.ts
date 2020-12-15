@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('USUARIO')
 export class Usuario {
@@ -40,4 +41,7 @@ export class Usuario {
     public setNroUsuario(nro_usuario:number){
         this.nro_usuario = nro_usuario;
     }
+
+    @OneToMany(() => Biblioteca, biblioteca => biblioteca.getNroUsuario())
+    biblioteca: Biblioteca[];
 }

@@ -1,33 +1,38 @@
-import { Injectable } from '@nestjs/common';
-import { Product } from '../producto';
-import * as fs from 'fs';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Producto } from 'src/producto/producto.entity';
+import { Repository } from 'typeorm';
+import { Biblioteca } from './biblioteca.entity';
 
 @Injectable()
 export class BibliotecaService {
-    getProductosUser(id: any): Product[] {
-        let biblioteca = fs.readFileSync('resources/biblioteca.csv', 'utf8');
-        const elementosB = biblioteca.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        let productos = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementosP = productos.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
+    constructor(
+        @InjectRepository(Biblioteca)
+        private readonly bibliotecaRepository: Repository<Biblioteca>,
+        private readonly productoRepository: Repository<Producto>,
+    ) { }
 
-        let nroProductos = [];
-        let listaProductos: Product[] = [];
-        for (let i = 0; i < elementosB.length; i++) {
-            if (id == elementosB[i][0]) {
-                nroProductos.push(elementosB[i][1]);
-            }
+    public async getProductosUser(id: any): Promise<Producto[]> {
+        console.log("Get All productos de User");
+        try {
+            let salida: Producto[];
+            let busqueda: Biblioteca[] = await this.bibliotecaRepository.find({
+                where: [
+                    { "nro_usuario" : id},
+                ],
+            });
+            busqueda.forEach(async idProducto => {
+                let producto = await this.productoRepository.findOne(idProducto.getNroProducto());
+                salida.push(producto);
+            });
+
+            return salida;
+
+        } catch (error) {
+            throw new HttpException({
+                status: HttpStatus.NOT_FOUND,
+                error: "there is an error in the request, " + error,
+            }, HttpStatus.NOT_FOUND);
         }
-        for (let j = 0; j < nroProductos.length; j++) {
-            for (let i = 0; i < elementosP.length; i++) {
-                if (nroProductos[j] == elementosP[i][0]) {
-                    let producto = new Product(parseInt(elementosP[i][0]), elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5], elementosP[i][6], elementosP[i][7]);
-                    listaProductos.push(producto);
-                    break;
-                }
-            }
-        }
-        return listaProductos;
     }
 }
