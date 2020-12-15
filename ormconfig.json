@@ -3,7 +3,7 @@
     "host": "localhost",
     "port": 3306,
     "username": "root",
-    "password": "dni37496273",
+    "password": "root",
     "database": "FACTURACION",
     "entities": [
         "dist/**/**.entity{.ts,.js}"

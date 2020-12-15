@@ -20,6 +20,7 @@ import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { LoginModule } from './login/login.module';
 import { UsersModule } from './users/users.module';
 import { FacturaModule } from './factura/factura.module';
+import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { FacturaModule } from './factura/factura.module';
     LoginModule,
     UsersModule,
     FacturaModule,
+    DetalleFacturaModule,
   ],
   controllers: [AppController, IndexController, CarritoController, CatalogoController, RegisterController, LoginController],
   providers: [AppService, CarritoService, IndexService, CatalogoService, RegisterService, LoginService],

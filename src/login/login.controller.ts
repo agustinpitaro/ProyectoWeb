@@ -10,10 +10,10 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class LoginController {
     constructor(private loginService: LoginService) { }
 
-    @Post('validate')
+    /*@Post('validate')
     public login(@Body() userInfo: any):Promise<boolean>{
         return this.loginService.login(userInfo);
-    }
+    }*/
 
 }/*
 @Controller('login')
