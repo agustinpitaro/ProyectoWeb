@@ -42,12 +42,9 @@ function checkSession() {
         carritoNavBar.style.display = "block";//muestro boton carrito
         let bibliotecaNavBar = document.getElementById('biblioteca-navbar');
         bibliotecaNavBar.style.display = "block";//muestro boton biblioteca
-        let addtocart = document.getElementById('carrito-button ');
-        addtocart.style.display = "block";//muestro el boton de compra
     }
     else{
-        let addtocart = document.getElementById('carrito-button ');
-        addtocart.style.display = "none";//oculto el boton de compra
+   
         let logoutNavBar = document.getElementById('logout-navbar');
         logoutNavBar.style.display = "none";//oculto boton logout
         let carritoNavBar = document.getElementById('carrito-navbar');

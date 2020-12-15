@@ -161,7 +161,17 @@ async function cargarPuntaje(e) {
 
     }
 }
-let biblioteca;
-let data;
-let rating;
-load();
+function checkSession() {
+    if (window.sessionStorage.getItem('user')) {
+        let addtocart = document.getElementById('carrito-button');
+        addtocart.style.display = "block";//muestro el boton de compra
+    }else{
+        let addtocart = document.getElementById('carrito-button ');
+        addtocart.style.display = "none";//oculto el boton de compra
+    }
+}
+    let biblioteca;
+    let data;
+    let rating;
+    load();
+    checkSession();
