@@ -1,17 +1,20 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Usuario } from 'src/users/users.entity';
+import { UsersService } from 'src/users/users.service';
 import { Repository } from 'typeorm';
 
 
 @Injectable()
 export class LoginService {
-    constructor() { }
+    constructor(
+        private usersService: UsersService,
+    ) { }
 
     public checkLogin(userLogged){
 
         console.log(userLogged);
-        let result = this.userService.findOne(userLogged.getUsername());
+        let result = this.usersService.findOne(userLogged.getUsername());
         
         if (result) {
             return "token123";

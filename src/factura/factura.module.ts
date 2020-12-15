@@ -11,8 +11,7 @@ import { FacturaService } from './factura.service';
   imports: [
     TypeOrmModule.forFeature([
       Factura,
-      Usuario,
-      DetalleFactura
+      Usuario
     ])
   ],
   controllers: [UsersController, FacturaController],

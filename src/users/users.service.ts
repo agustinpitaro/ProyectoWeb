@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Usuario } from './users.entity';
 import { Not, Repository } from 'typeorm';
+import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
 export type User = any;
 
 @Injectable()
@@ -20,7 +21,7 @@ export class UsersService {
         return this.users.find(user => user.getUsername() === username);
     }
 
-
+    
     public async getUsuarios(token): Promise<Usuario[]> {
         console.log("Get All clientes");
 
@@ -31,8 +32,10 @@ export class UsersService {
         }
 
         try {
-            const result = await this.usuarioRepository.find();
-            return result
+            const result= await this.usuarioRepository.find({
+                relations: ["facturas"]
+            });
+            return result;
 
         } catch (error) {
             throw new HttpException({

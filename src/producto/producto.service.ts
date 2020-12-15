@@ -13,21 +13,8 @@ export class ProductoService {
         private readonly productoRepository: Repository<Producto>
     ) { }
 
-    public async getAll(): Promise<Producto[]> {
-        console.log("Get All productos");
-        try {
-            const result: Producto[] = await this.productoRepository.find();
-            return result;
 
-        } catch (error) {
-            throw new HttpException({
-                status: HttpStatus.NOT_FOUND,
-                error: "there is an error in the request, " + error,
-            }, HttpStatus.NOT_FOUND);
-        }
-    }
-
-    public async getById(id: number): Promise<Producto> {
+    private async getById(id: number): Promise<Producto> {
         console.log("Getting Product id: " + id);
         try {
             let producto: Producto = await this.productoRepository.findOne(id);
