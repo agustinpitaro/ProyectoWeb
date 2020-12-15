@@ -16,20 +16,25 @@ export class BibliotecaService {
         private readonly usuarioRepository: Repository<Usuario>,
     ) { }
 
+    private async getFullProductos(biblioteca): Promise<Producto[]> {
+        let salida : Producto[] = [];
+        for(let i = 0; i<biblioteca.length; i++){
+            console.log(biblioteca[i]);
+            let producto = await this.productoRepository.findOne(biblioteca[i].getNroProducto());
+            salida.push(producto);
+        }
+        return salida;
+    }
+
     public async getProductosUser(id: any): Promise<Producto[]> {
-        let salida;
         try {
-            let usuario = await this.usuarioRepository.find({ where : [ {"username":id} ]});
+            let usuario = await this.usuarioRepository.find({ where: [{ "username": id }] });
             let busqueda: Biblioteca[] = await this.bibliotecaRepository.find({
                 where: [
-                    { "nro_usuario" : usuario[0].getNroUsuario()},
+                    { "nro_usuario": usuario[0].getNroUsuario() },
                 ],
             });
-            busqueda.forEach(idProducto => {
-                let producto = this.productoRepository.findOne(idProducto.getNroProducto());
-                salida.push(producto);
-            });
-            console.log(salida);
+            let salida = await this.getFullProductos(busqueda);
             return salida;
 
         } catch (error) {
