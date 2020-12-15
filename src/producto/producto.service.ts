@@ -45,12 +45,12 @@ export class ProductoService {
             let productoPrincipal = await producto;
             let productosRelacionados: Producto[] = await this.productoRepository.find({
                 where: [
-                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero": productoPrincipal.getGenero()},
-                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero": productoPrincipal.getGeneroSecundario()},
-                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero_secundario": productoPrincipal.getGenero()},
-                    { "nro_producto" : Not(productoPrincipal.getNroProducto()), "genero_secundario": productoPrincipal.getGeneroSecundario()},
+                    { "nro_producto": Not(productoPrincipal.getNroProducto()), "genero": productoPrincipal.getGenero() },
+                    { "nro_producto": Not(productoPrincipal.getNroProducto()), "genero": productoPrincipal.getGeneroSecundario() },
+                    { "nro_producto": Not(productoPrincipal.getNroProducto()), "genero_secundario": productoPrincipal.getGenero() },
+                    { "nro_producto": Not(productoPrincipal.getNroProducto()), "genero_secundario": productoPrincipal.getGeneroSecundario() },
                 ],
-                take : 3,
+                take: 3,
             });
             if (productosRelacionados) {
                 return productosRelacionados;
@@ -75,12 +75,17 @@ export class ProductoService {
     }
 
     public async getPuntaje(nro_producto: any): Promise<Number> { //LEER DE BIBLIOTECA
-        let productos = await this.bibliotecaRepository.find(nro_producto);
+        console.log(nro_producto);
         let promedio = 0;
+        let productos = await this.bibliotecaRepository.find({
+            where: [{
+                "nro_producto" : nro_producto
+            }]});
+        console.log(productos);
         productos.forEach(p => {
-            promedio =+ p.getPuntaje();
+            promedio = + p.getPuntaje();
         })
-        console.log(promedio/productos.length);
-        return promedio/productos.length;
+        console.log(promedio / productos.length);
+        return promedio / productos.length;
     }
 }

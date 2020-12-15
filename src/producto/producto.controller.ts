@@ -7,7 +7,6 @@ import { ProductoService } from './producto.service';
 export class ProductoController {
     constructor(private productoService: ProductoService) { }
 
-    @UseGuards(JwtAuthGuard)
     @Get(':id')
     public getProduct(@Param('id') id): Promise<Producto[]>{
         return this.productoService.getProducto(id);
