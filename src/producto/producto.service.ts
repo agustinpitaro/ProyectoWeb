@@ -50,7 +50,6 @@ export class ProductoService {
         let producto = await this.getById(id);
         productoAndRelated.push(producto);
         productoAndRelated = productoAndRelated.concat(await this.getRelacionados(producto));
-        console.log(productoAndRelated);
         return productoAndRelated;
     }
 
@@ -94,6 +93,7 @@ export class ProductoService {
         productos.forEach(p => {
             promedio =+ p.getPuntaje();
         })
+        console.log(promedio/productos.length);
         return promedio/productos.length;
     }
 }

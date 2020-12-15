@@ -18,6 +18,7 @@ async function validateLogin(e) {
   if (await respuesta.json()) {
     window.sessionStorage.setItem('userLogged', true);
     window.sessionStorage.setItem('user',  user.name);
+    window.sessionStorage.removeItem('carrito');
     window.location.href = 'http://localhost:3000';
   }
   //mostrar cartel de datos erroneos
