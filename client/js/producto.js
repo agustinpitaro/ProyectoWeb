@@ -156,7 +156,6 @@ function checkPertenencia(biblioteca) {
     return salida;
 
 }
-
 function cargarProducto(e) {
     botonCarrito.innerText = "Agregado al carrito!";
     botonCarrito.removeEventListener('click', cargarProducto);
