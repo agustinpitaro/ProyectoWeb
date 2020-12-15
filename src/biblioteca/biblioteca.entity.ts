@@ -11,7 +11,7 @@ export class Biblioteca {
     private nro_usuario : number;
 
     @ManyToOne(() => Usuario, user => user.getNroUsuario())
-    private usuario : Usuario;
+    private user : Usuario;
 
     @ManyToOne(() => Producto, producto => producto.getNroProducto())
     private producto : Producto;
@@ -34,16 +34,16 @@ export class Biblioteca {
     }
 
     public getNroProducto():number{
-        return this.producto.getNroProducto();
+        return this.nro_producto;
     }
     
     public setNroProducto(nro_producto: number){
-        this.producto.setNroProducto(nro_producto);
+        this.nro_producto = nro_producto;
     }
     public getNroUsuario():number{
-        return this.usuario.getNroUsuario();
+        return this.nro_usuario;
     }
     public setNroUsuario(nro_usuario:number){
-        this.usuario.setNroUsuario(nro_usuario);
+        this.nro_usuario = nro_usuario;
     }
 }
