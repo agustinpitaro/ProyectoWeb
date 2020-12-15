@@ -1,17 +1,21 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Producto } from 'src/producto/producto.entity';
+import { Usuario } from 'src/users/users.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('BIBLIOTECA')
 export class Biblioteca {
-    
     @PrimaryGeneratedColumn()
-    private nro_producto: number;
+    @ManyToOne(() => Producto, producto => producto.getNroProducto())
+    private producto : Producto;
 
     @PrimaryGeneratedColumn()
-    private nro_usuario: number;
-
+    @ManyToOne(() => Usuario, user => user.getNroUsuario())
+    private usuario : Usuario;
 
     @Column()
     private puntaje: number;
+
+
 
     public getPuntaje(): number {
         return this.puntaje;
@@ -26,16 +30,16 @@ export class Biblioteca {
     }
 
     public getNroProducto():number{
-        return this.nro_producto;
+        return this.producto.getNroProducto();
     }
     
     public setNroProducto(nro_producto: number){
-        this.nro_producto = nro_producto;
+        this.producto.setNroProducto(nro_producto);
     }
     public getNroUsuario():number{
-        return this.nro_usuario;
+        return this.usuario.getNroUsuario();
     }
     public setNroUsuario(nro_usuario:number){
-        this.nro_usuario = nro_usuario;
+        this.usuario.setNroUsuario(nro_usuario);
     }
 }

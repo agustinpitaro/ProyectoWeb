@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('PRODUCTO')
 export class Producto {
@@ -8,6 +9,9 @@ export class Producto {
 
     @Column()
     private titulo: string;
+
+    @OneToMany(() => Biblioteca, biblioteca => biblioteca.getNroProducto())
+    biblioteca: Biblioteca[];
 
     public getTitulo(): string {
         return this.titulo;
