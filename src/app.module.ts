@@ -10,7 +10,6 @@ import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { LoginModule } from './login/login.module';
 import { UsersModule } from './users/users.module';
 import { FacturaModule } from './factura/factura.module';
-import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
 import { RegisterModule } from './register/register.module';
 import { IndexModule } from './index/index.module';
 import { CatalogoModule } from './catalogo/catalogo.module';
@@ -28,7 +27,6 @@ import { CarritoModule } from './carrito/carrito.module';
     LoginModule,
     UsersModule,
     FacturaModule,
-    DetalleFacturaModule,
     RegisterModule,
     IndexModule,
     CatalogoModule,

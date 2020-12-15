@@ -17,9 +17,11 @@ export class UsersService {
         return todoslosusuarios;
     }
 
+
+/*
 private readonly users = this.usuarioRepository.find();
   async findOne(username: string): Promise<User | undefined> {
       let usuariobuscado = this.getUsuarios();
     return this.usuariobuscado.find(user => user.username === username);
-  }
+  }*/
 }

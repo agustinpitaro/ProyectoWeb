@@ -1,4 +1,3 @@
-import { DetalleFactura } from 'src/detalle-factura/detalle-factura.entity';
 import { Usuario } from 'src/users/users.entity';
 import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -13,10 +12,7 @@ export class Factura {
 
     @PrimaryGeneratedColumn()
     public nro_factura: number;
-
-    @OneToMany(() => DetalleFactura, detallefactura => detallefactura.nro_factura)
-    detallefactura: DetalleFactura[];
-
+    
     @Column()
     private fecha: string ;
 
