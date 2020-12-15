@@ -1,4 +1,5 @@
 import { Producto } from './producto.entity';
+import {Usuario} from '../users/users.entity';
 import { Module } from '@nestjs/common';
 import { ProductoController } from './producto.controller';
 import { ProductoService } from './producto.service';
@@ -9,7 +10,8 @@ import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
   imports: [
     TypeOrmModule.forFeature([
       Biblioteca,
-      Producto
+      Producto,
+      Usuario
     ])
   ],
   controllers: [ProductoController],
