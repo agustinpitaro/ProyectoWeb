@@ -19,6 +19,7 @@ import { AuthModule } from './auth/auth.module';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { LoginModule } from './login/login.module';
 import { UsersModule } from './users/users.module';
+import { FacturaModule } from './factura/factura.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { UsersModule } from './users/users.module';
     BibliotecaModule,
     LoginModule,
     UsersModule,
+    FacturaModule,
   ],
   controllers: [AppController, IndexController, CarritoController, CatalogoController, RegisterController, LoginController],
   providers: [AppService, CarritoService, IndexService, CatalogoService, RegisterService, LoginService],
