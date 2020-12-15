@@ -3,10 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as fs from 'fs';
 import { Producto } from './producto.entity';
 import { Not, Repository } from 'typeorm';
+import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
 
 @Injectable()
 export class ProductoService {
     constructor(
+        @InjectRepository(Biblioteca)
+        private readonly bibliotecaRepository: Repository<Biblioteca>,
         @InjectRepository(Producto)
         private readonly productoRepository: Repository<Producto>
     ) { }
@@ -77,26 +80,21 @@ export class ProductoService {
             }, HttpStatus.NOT_FOUND);
         }
     }
-    
+
 
     public votarProducto(voto: any): boolean { //ESCRIBIR EN BIBLIOTECA
-        let linea = "\n" + voto.username + "," + voto.producto + "," + voto.puntaje;
-        console.log(linea);
+
+        let lineaBiblio = new Biblioteca(voto.producto, voto.username, voto.puntaje);
+        this.bibliotecaRepository.save(lineaBiblio);
         return true;
     }
 
-    public getPuntaje(nro_producto: any): Number { //LEER DE BIBLIOTECA
-        let contador = 0;
-        let salida = 0;
-        let biblioteca = fs.readFileSync('resources/biblioteca.csv', 'utf8');
-        const elementosB = biblioteca.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        for (let i = 0; i < elementosB.length; i++) {
-            if (nro_producto == elementosB[i][1] && elementosB[i][2] != "-1") {
-                salida += parseInt(elementosB[i][2]);
-                contador++;
-            }
-        }
-        return salida / contador;
+    public async getPuntaje(nro_producto: any): Promise<Number> { //LEER DE BIBLIOTECA
+        let productos = await this.bibliotecaRepository.find(nro_producto);
+        let promedio = 0;
+        productos.forEach(p => {
+            promedio =+ p.getPuntaje();
+        })
+        return promedio/productos.length;
     }
 }

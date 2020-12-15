@@ -3,11 +3,13 @@ import { Module } from '@nestjs/common';
 import { BibliotecaController } from './biblioteca.controller';
 import { BibliotecaService } from './biblioteca.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Producto } from 'src/producto/producto.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
-    Biblioteca
+    Biblioteca,
+    Producto
     ])
   ],
   controllers:[BibliotecaController],

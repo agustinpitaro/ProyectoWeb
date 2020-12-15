@@ -1,21 +1,23 @@
 import { Producto } from 'src/producto/producto.entity';
 import { Usuario } from 'src/users/users.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('BIBLIOTECA')
 export class Biblioteca {
-    @PrimaryGeneratedColumn()
-    @ManyToOne(() => Producto, producto => producto.getNroProducto())
-    private producto : Producto;
+    @PrimaryColumn()
+    private nro_producto : number;
 
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
+    private nro_usuario : number;
+
     @ManyToOne(() => Usuario, user => user.getNroUsuario())
     private usuario : Usuario;
 
+    @ManyToOne(() => Producto, producto => producto.getNroProducto())
+    private producto : Producto;
+
     @Column()
     private puntaje: number;
-
-
 
     public getPuntaje(): number {
         return this.puntaje;
@@ -25,7 +27,9 @@ export class Biblioteca {
         this.puntaje = puntaje;
     }
 
-    public constructor (puntaje?:number){
+    public constructor (nro_producto?:number, nro_usuario?:number,puntaje?:number){
+        this.nro_producto = nro_producto;
+        this.nro_usuario = nro_usuario;
         this.puntaje = puntaje;
     }
 

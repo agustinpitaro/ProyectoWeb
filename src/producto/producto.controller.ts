@@ -11,7 +11,7 @@ export class ProductoController {
         return this.productoService.getProducto(id);
     }
     @Get('/:nro_producto/puntaje')
-    public getPuntaje(@Param('nro_producto') nro_producto): Number{
+    public getPuntaje(@Param('nro_producto') nro_producto): Promise<Number>{
         return this.productoService.getPuntaje(nro_producto);
     }
     @Post()

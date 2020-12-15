@@ -9,6 +9,7 @@ export class BibliotecaService {
     constructor(
         @InjectRepository(Biblioteca)
         private readonly bibliotecaRepository: Repository<Biblioteca>,
+        @InjectRepository(Producto)
         private readonly productoRepository: Repository<Producto>,
     ) { }
 
