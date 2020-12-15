@@ -14,16 +14,21 @@ export class IndexService {
 
     public async getProductosPopulares(): Promise<Producto[]> {
         
+        let listafinal = await this.productoRepository.find({take : 3});
+        /*
         let lista = await getConnection()
         .createQueryBuilder()
         .select("nro_producto, AVG(puntaje)")
         .from(Biblioteca, "tuplas").orderBy("AVG(puntaje)", "DESC")
         .limit(5).getMany();
+
+        console.log(lista);
         let listafinal : Producto[];
         lista.forEach(async p => {
             let producto = await this.productoRepository.findOne(p.getNroProducto());
             listafinal.push(producto);
         });
+        */
         return listafinal;
     }
     public async getProductosCarousel(): Promise<Producto[]> {
