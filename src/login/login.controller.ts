@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 
-
+/*
 @Controller('login')
 export class LoginController {
     constructor(private loginService: LoginService) { }
@@ -13,9 +13,9 @@ export class LoginController {
     /*@Post('validate')
     public login(@Body() userInfo: any):Promise<boolean>{
         return this.loginService.login(userInfo);
-    }*/
+    }
 
-}/*
+} */
 @Controller('login')
 export class LoginController {
     
@@ -33,4 +33,5 @@ export class LoginController {
         return req.user;
     }
     
-    */
+  
+}
