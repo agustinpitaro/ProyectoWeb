@@ -1,44 +1,40 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from '../producto';
 import * as fs from 'fs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Producto } from 'src/producto/producto.entity';
+import { getConnection, Repository } from 'typeorm';
+import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
 
 @Injectable()
 export class IndexService {
-    getProductosPopulares(): Product[] {
-        let productos = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementosP = productos.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        
-        //Aca recibiria los productos ordenados por puntaje    
-        let listaProductos: Product[] = [];
-        for (let i = 0; i < elementosP.length; i++) {
-            let producto = new Product(parseInt(elementosP[i][0]), elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5], elementosP[i][6], elementosP[i][7]);
-            listaProductos.push(producto);
-        }
-        return listaProductos;
-    }
-    getProductosCarousel(): Product[] {
-        let productos = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementosP = productos.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
+    constructor(
+        @InjectRepository(Biblioteca)
+        private readonly bibliotecaRepository: Repository<Biblioteca>,
+        @InjectRepository(Producto)
+        private readonly productoRepository: Repository<Producto>
+    ) { }
 
-        //Aca recibiria los ultimos 3 agregados.
-        let listaProductos: Product[] = [];
-        for (let i = 0; i < elementosP.length; i++) {
-            let producto = new Product(parseInt(elementosP[i][0]), elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5], elementosP[i][6], elementosP[i][7]);
-            listaProductos.push(producto);
-        }
-        return listaProductos;
+    public async getProductosPopulares(): Promise<Producto[]> {
+        
+        let lista = await getConnection()
+        .createQueryBuilder()
+        .select("nro_producto, AVG(puntaje)")
+        .from(Biblioteca, "tuplas").orderBy("AVG(puntaje)", "DESC")
+        .limit(5).getMany();
+        let listafinal : Producto[];
+        lista.forEach(async p => {
+            let producto = await this.productoRepository.findOne(p.getNroProducto());
+            listafinal.push(producto);
+        });
+        return listafinal;
     }
-    getProductosRecientes(): Product[] {
-        let productos = fs.readFileSync('resources/productos.csv', 'utf8');
-        const elementosP = productos.split('\n')
-            .map(p => p.replace('\r', '')).map(p => p.split(','));
-        let listaProductos: Product[] = [];
-        for (let i = 0; i < elementosP.length; i++) {
-            let producto = new Product(parseInt(elementosP[i][0]), elementosP[i][1], elementosP[i][2], elementosP[i][3], elementosP[i][4], elementosP[i][5], elementosP[i][6], elementosP[i][7]);
-            listaProductos.push(producto);
-        }
-        return listaProductos;
+    public async getProductosCarousel(): Promise<Producto[]> {
+
+        let carousel = await this.productoRepository.find({take : 3});
+        return carousel;
+    }
+    public async getProductosRecientes(): Promise<Producto[]> {
+        let recientes = await this.productoRepository.find({take : 5});
+        return recientes;
     }
 }

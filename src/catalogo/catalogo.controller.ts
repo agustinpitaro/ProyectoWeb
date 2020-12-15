@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { CatalogoService } from './catalogo.service';
-import { Product } from '../producto';
+import { Producto } from 'src/producto/producto.entity';
 
 @Controller('catalogo')
 export class CatalogoController {
     constructor(private CatalogoService: CatalogoService) { }
 
     @Get()
-    public getProductosSegunUsuario(): Product[]{
+    public getProductosSegunUsuario(): Promise<Producto[]>{
         return this.CatalogoService.getProductos();
     }
 }

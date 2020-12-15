@@ -5,8 +5,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { CarritoService } from './carrito/carrito.service';
 import { CarritoController } from './carrito/carrito.controller';
-import { IndexController } from './index/index.controller';
-import { IndexService } from './index/index.service';
 import { CatalogoController } from './catalogo/catalogo.controller';
 import { CatalogoService } from './catalogo/catalogo.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -18,6 +16,7 @@ import { UsersModule } from './users/users.module';
 import { FacturaModule } from './factura/factura.module';
 import { DetalleFacturaModule } from './detalle-factura/detalle-factura.module';
 import { RegisterModule } from './register/register.module';
+import { IndexModule } from './index/index.module';
 
 @Module({
   imports: [
@@ -33,8 +32,9 @@ import { RegisterModule } from './register/register.module';
     FacturaModule,
     DetalleFacturaModule,
     RegisterModule,
+    IndexModule,
   ],
-  controllers: [AppController, IndexController, CarritoController, CatalogoController],
-  providers: [AppService, CarritoService, IndexService, CatalogoService],
+  controllers: [AppController, CarritoController, CatalogoController],
+  providers: [AppService, CarritoService, CatalogoService],
 })
 export class AppModule { }
