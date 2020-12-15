@@ -43,9 +43,17 @@ export class Usuario {
         this.nro_usuario = nro_usuario;
     }
 
-    @OneToMany(() => Biblioteca, biblioteca => biblioteca.nro_usuario)
-    biblioteca: Biblioteca[];
+    @OneToMany((type) => Biblioteca, biblioteca => biblioteca.user)
+    public biblioteca: Biblioteca[];
 
-    @OneToMany(() => Factura, factura => factura.nro_usuario)
-    factura: Factura[];
+    public getBiblioteca() : Biblioteca[]{
+        return this.biblioteca;
+    }
+
+    @OneToMany((type) => Factura, factura => factura.user)
+    public facturas: Factura[];
+
+    public getFacturas() : Factura[]{
+        return this.facturas;
+    }
 }

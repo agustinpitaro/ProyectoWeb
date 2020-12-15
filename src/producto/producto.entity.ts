@@ -1,4 +1,5 @@
 import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
+import { Factura } from 'src/factura/factura.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('PRODUCTO')
@@ -10,8 +11,11 @@ export class Producto {
     @Column()
     private titulo: string;
 
-    @OneToMany(() => Biblioteca, biblioteca => biblioteca.nro_producto)
-    biblioteca: Biblioteca[];
+    @OneToMany(() => Biblioteca, biblioteca => biblioteca.producto)
+    public biblioteca: Biblioteca[];
+
+    @OneToMany(() => Factura, factura => factura.producto)
+    public facturas: Factura[];
 
     public getTitulo(): string {
         return this.titulo;
@@ -20,7 +24,7 @@ export class Producto {
     public setTitulo(titulo: string) {
         this.titulo = titulo;
     }
-   
+
     @Column()
     private sinopsis: string;
 
@@ -32,10 +36,10 @@ export class Producto {
         this.sinopsis = sinopsis;
     }
 
-   
+
     @Column()
     private imagen: string;
-   
+
 
     public getImagen(): string {
         return this.imagen;
@@ -87,7 +91,7 @@ export class Producto {
         this.link = link;
     }
 
-    public constructor(titulo?:string, sinopsis?:string, imagen?:string, precio?:number, genero?:string, genero_secundario?:string, link?:string){
+    public constructor(titulo?: string, sinopsis?: string, imagen?: string, precio?: number, genero?: string, genero_secundario?: string, link?: string) {
         this.titulo = titulo;
         this.sinopsis = sinopsis;
         this.imagen = imagen;
@@ -97,11 +101,11 @@ export class Producto {
         this.link = link;
     }
 
-    public getNroProducto():number{
+    public getNroProducto(): number {
         return this.nro_producto;
     }
-    
-    public setNroProducto(nro_producto: number){
+
+    public setNroProducto(nro_producto: number) {
         this.nro_producto = nro_producto;
     }
 
