@@ -10,13 +10,13 @@ export class Factura {
     private nro_factura: number;
 
     @Column()
-    private fecha: DateConstructor ;
+    private fecha: string ;
 
-    public getFecha(): DateConstructor {
+    public getFecha(): string {
         return this.fecha;
     }
 
-    public setFecha(fecha: DateConstructor) {
+    public setFecha(fecha: string) {
         this.fecha = fecha;
     }
 
@@ -53,7 +53,7 @@ export class Factura {
         this.total_con_iva = total_con_iva;
     }
 
-    public constructor (fecha?:DateConstructor, total_sin_iva?:number, iva?:number, total_con_iva?:number){
+    public constructor (fecha?:string, total_sin_iva?:number, iva?:number, total_con_iva?:number){
         this.fecha = fecha;
         this.total_sin_iva = total_sin_iva;
         this.iva = iva;
