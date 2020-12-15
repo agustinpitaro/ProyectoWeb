@@ -1,39 +1,40 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Producto } from 'src/producto/producto.entity';
-import { Not, Repository } from 'typeorm';
 import { Usuario } from 'src/users/users.entity';
+import { Repository } from 'typeorm';
+import { Factura } from './factura.entity';
 
 @Injectable()
-export class FacturaService {
+export class FacturaService{
 
     constructor(
-        @InjectRepository(Usuario)
-        private readonly usuarioRepository: Repository<Usuario>,
-        @InjectRepository(Producto)
-        private readonly productoRepository: Repository<Producto>
-    ) { }
+        @InjectRepository(Factura) private readonly facturaRepository: Repository<Factura>,
+        @InjectRepository(Usuario) private readonly clienteRepository: Repository<Usuario>
+        ){}
 
+     public async getAll(): Promise<Factura[]>{
+        try {
+            const result: Factura[] = await this.facturaRepository.find({
+                relations: ["cliente"]
+            });
+            //const detalle_factura = await this.facturaRepository.find({ relations: ["producto"] });
 
-    public GenerateFactura() {
+            return result;
 
-    }
-    public getTotalSINiva(){
-
-    }
-    public getIva(){
-
-    }
-
-    public getTotalCONiva(){
-
-    }
-
-    public getCurrentDate(){
-        let today = new Date();
-        let currentdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-        return currentdate;
+        } catch (error) {
+            throw new HttpException({
+                status: HttpStatus.NOT_FOUND,
+                error: "there is an error in the request, " + error,
+              }, HttpStatus.NOT_FOUND);
+        }
     }
 
-
+    async getByFactura(facturaId: number): Promise<U> {
+        let response: Cliente = await this.clienteRepository.findOne({
+            where: [{
+                "nro_cliente": Equal(facturaId)
+            }]
+        })
+        return response
+    }
 }

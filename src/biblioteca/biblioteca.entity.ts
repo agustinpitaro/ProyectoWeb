@@ -10,11 +10,11 @@ export class Biblioteca {
     @PrimaryColumn()
     public nro_usuario : number;
 
-    @ManyToOne(() => Usuario, user => user.nro_usuario)
-    private user : Usuario;
+    @ManyToOne(() => Usuario, user => user.biblioteca)
+    public user : Usuario;
 
-    @ManyToOne(() => Producto, producto => producto.nro_producto)
-    private producto : Producto;
+    @ManyToOne(() => Producto, producto => producto.biblioteca)
+    public producto : Producto;
 
     @Column()
     private puntaje: number;
