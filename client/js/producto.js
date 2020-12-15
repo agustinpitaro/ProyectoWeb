@@ -46,43 +46,76 @@ async function loadRelacionados(data) {
 }
 
 async function load() {
-    console.log("Funcion de carga producto");
-    let paramstr = window.location.search.substr(1);
-    let paramarr = paramstr.split("&");
-    let params = [];
-    for (let i = 0; i < paramarr.length; i++) {
-        let tmparr = paramarr[i].split("=");
-        params[tmparr[0]] = tmparr[1];
-    }
-    productoid = params["id"];
-    productPage = /producto/ + productoid;
-    /*let response3 = await fetch("/producto/" + productoid + "/puntaje", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });*/
-    rating = 0;//await response3.json();
-    let response = await fetch(productPage, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    data = await response.json();
-    loadProducto(data);
     let dueno = window.sessionStorage.getItem('user');
-    let duenoPage = /biblioteca/ + dueno;
-    let response2 = await fetch(duenoPage, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    biblioteca = await response2.json();
-    if (checkPertenencia(biblioteca)) {
-        botonCarrito.removeEventListener('click', cargarProducto);
+    if (dueno) {
+        console.log("Funcion de carga producto");
+        let paramstr = window.location.search.substr(1);
+        let paramarr = paramstr.split("&");
+        let params = [];
+        for (let i = 0; i < paramarr.length; i++) {
+            let tmparr = paramarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+        productoid = params["id"];
+        productPage = /producto/ + productoid;
+        /*let response3 = await fetch("/producto/" + productoid + "/puntaje", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });*/
+        rating = 0;//await response3.json();
+        let response = await fetch(productPage, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        data = await response.json();
+        loadProducto(data);
+        let dueno = window.sessionStorage.getItem('user');
+        let duenoPage = /biblioteca/ + dueno;
+        let response2 = await fetch(duenoPage, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        biblioteca = await response2.json();
+        if (checkPertenencia(biblioteca)) {
+            botonCarrito.removeEventListener('click', cargarProducto);
+        }
+
     }
+    else {
+        botonCarrito.style.display = 'none';
+        console.log("Funcion de carga producto");
+        let paramstr = window.location.search.substr(1);
+        let paramarr = paramstr.split("&");
+        let params = [];
+        for (let i = 0; i < paramarr.length; i++) {
+            let tmparr = paramarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+        productoid = params["id"];
+        productPage = /producto/ + productoid;
+        /*let response3 = await fetch("/producto/" + productoid + "/puntaje", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });*/
+        rating = 0;//await response3.json();
+        let response = await fetch(productPage, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        data = await response.json();
+        loadProducto(data);
+    }
+
 }
 
 function checkPertenencia(biblioteca) {
@@ -165,13 +198,13 @@ function checkSession() {
     if (window.sessionStorage.getItem('user')) {
         let addtocart = document.getElementById('carrito-button');
         addtocart.style.display = "block";//muestro el boton de compra
-    }else{
+    } else {
         let addtocart = document.getElementById('carrito-button ');
         addtocart.style.display = "none";//oculto el boton de compra
     }
 }
-    let biblioteca;
-    let data;
-    let rating;
-    load();
-    checkSession();
+let biblioteca;
+let data;
+let rating;
+load();
+checkSession();
