@@ -17,6 +17,7 @@ function loadProducto(data) {
     sinopsis.innerHTML = data[0].sinopsis;
     puntaje.innerText = Math.round(rating) + "/10";
     loadRelacionados(data);
+
 }
 
 
