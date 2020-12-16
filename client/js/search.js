@@ -13,6 +13,7 @@ buscador.addEventListener('keyup', function (e) {
         if (buscador.value.length > 3 && miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }) ) {
             debugger;
             predict.style.display = "block";
+            predict.style.color = "turquoise";
             let resultado = miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 })[0].titulo;
             predictLI.innerHTML = resultado;
         }
