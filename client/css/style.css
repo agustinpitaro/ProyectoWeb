@@ -829,7 +829,8 @@ div div{
   font-weight: bolder;
 }
 .cat{
-  font-family:'neon', cursive;
+  font-family:'Bungee Inline', cursive;
+ 
   color: #FB4264;
   ;
 }
@@ -838,7 +839,7 @@ div div{
 }
 
 .flux {
-  font-family: 'neon', cursive;
+  font-family: 'Bungee Inline', cursive;
   font-size: 30px;
   color: #426DFB;
   ;
@@ -887,10 +888,10 @@ div div{
 }
 
 .cat{
-  animation: cat 10s linear infinite;
-  -moz-animation: cat 10s linear infinite;
-  -webkit-animation: cat 10s linear infinite;
-  -o-animation: cat 10s linear infinite;
+  animation: cat 5s linear infinite;
+  -moz-animation: cat 5s linear infinite;
+  -webkit-animation: cat 5s linear infinite;
+  -o-animation: cat 5s linear infinite;
 }
 
 @keyframes cat {
