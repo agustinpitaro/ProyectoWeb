@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap');
+
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
 .product-list {
   overflow: hidden;
   -webkit-perspective: 1000px;
@@ -781,7 +787,7 @@ html, body {
 /*manoseado*/
 .imgcarousel{
 height: 400px ;
-width: fit-content;
+
 
 }
 
@@ -804,4 +810,97 @@ img{
 }
 div div{
   border-color: rgb(78, 32, 100)!important;
+}
+
+.carousel {
+  width:640px;
+  
+}
+
+
+/* neon */
+.neon {
+  font-family:'neon', cursive;
+  font-size: 30px;
+  color: #FB4264;
+;
+}
+.neon:hover{
+  font-weight: bolder;
+}
+.cat{
+  font-family:'neon', cursive;
+  color: #FB4264;
+  ;
+}
+.cat:hover{
+  font-weight: bolder;
+}
+
+.flux {
+  font-family: 'neon', cursive;
+  font-size: 30px;
+  color: #426DFB;
+  ;
+}
+.flux:hover{
+  font-weight: bolder;
+}
+
+.neon {
+  animation: neon 10s ease infinite;
+  -moz-animation: neon 10s ease infinite;
+  -webkit-animation: neon 10s ease infinite;
+}
+
+
+
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #9525fd, 0 0 3vw#9525fd, 0 0 10vw#9525fd, 0 0 10vw#9525fd, 0 0 .4vw#9525fd, ;
+    color: #9525fd;
+  }
+  50% {
+    text-shadow: 0 0 1vw#9525fd, 0 0 3vw#9525fd, 0 0 10vw#9525fd, 0 0 10vw#9525fd, 0 0 .4vw#9525fd, ;
+    color: #9525fd;
+  }
+}
+
+.flux {
+  animation: flux 10s linear infinite;
+  -moz-animation: flux 10s linear infinite;
+  -webkit-animation: flux 10s linear infinite;
+  -o-animation: flux 10s linear infinite;
+}
+
+@keyframes flux {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, ;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF,;
+    color: #28D7FE;
+  }
+}
+
+.cat{
+  animation: cat 10s linear infinite;
+  -moz-animation: cat 10s linear infinite;
+  -webkit-animation: cat 10s linear infinite;
+  -o-animation: cat 10s linear infinite;
+}
+
+@keyframes cat {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #b61ffc, 0 0 3vw #b61ffc, 0 0 10vw #b61ffc, 0 0 10vw #b61ffc, ;
+    color: #9628fe;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #1041FF, 0 0 1.5vw #1041FF, 0 0 5vw #1041FF, 0 0 5vw #1041FF,;
+    color: #28D7FE;
+  }
 }
