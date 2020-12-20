@@ -81,7 +81,7 @@ function loadProductos(productos) {
         let aTitulo = document.createElement('a');
         aTitulo.className = "product-name";
         aTitulo.href = "product.html?link=" + elemento.link;
-        aTitulo.style = "color: #ea094d;";
+        aTitulo.style = "color: #28D7FE;";
         aTitulo.innerText = elemento.titulo;
 
         let divSinopsis = document.createElement('div');
@@ -89,6 +89,9 @@ function loadProductos(productos) {
 
         let pSinopsis = document.createElement('p');
         pSinopsis.innerHTML = elemento.sinopsis;
+        pSinopsis.style.fontFamily = "sans serif";
+        pSinopsis.style.fontSize = "15px";
+        pSinopsis.style.color = "whitesmoke";
 
         divSinopsis.appendChild(pSinopsis);
         //////

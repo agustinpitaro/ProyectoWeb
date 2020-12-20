@@ -821,8 +821,8 @@ div div{
 
 /* neon */
 .neon {
-  font-family:'neon', cursive;
-  font-size: 30px;
+  font-family:'Bungee Inline', cursive;
+ 
   color: #FB4264;
 ;
 }
@@ -889,10 +889,10 @@ div div{
 }
 
 .cat{
-  animation: cat 5s linear infinite;
-  -moz-animation: cat 5s linear infinite;
-  -webkit-animation: cat 5s linear infinite;
-  -o-animation: cat 5s linear infinite;
+  animation: cat 3s linear infinite;
+  -moz-animation: cat 3s linear infinite;
+  -webkit-animation: cat 3s linear infinite;
+  -o-animation: cat 3s linear infinite;
 }
 
 @keyframes cat {
