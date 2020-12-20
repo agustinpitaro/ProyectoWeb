@@ -68,7 +68,7 @@ async function load() {
                 'Content-Type': 'application/json',
             },
         });
-        rating = 0;//await response3.json();
+        rating = await response3.json();
         let response = await fetch(productPage, {
             method: 'GET',
             headers: {
@@ -103,13 +103,13 @@ async function load() {
         }
         productoid = params["id"];
         productPage = /producto/ + productoid;
-        /*let response3 = await fetch("/producto/" + productoid + "/puntaje", {
+        let response3 = await fetch("/producto/" + productoid + "/puntaje", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-        });*/
-        rating = 0;//await response3.json();
+        });
+        rating = await response3.json();
         let response = await fetch(productPage, {
             method: 'GET',
             headers: {
@@ -179,6 +179,7 @@ function cargarProducto(e) {
 }
 
 async function cargarPuntaje(e) {
+    debugger;
     let voto = document.getElementById('puntajeVoto').value;
     if (voto) {
         let user = window.sessionStorage.getItem('user');

@@ -16,7 +16,7 @@ export class ProductoController {
         return this.productoService.getPuntaje(nro_producto);
     }
     @Post()
-    public votarProducto(@Body() voto: any):boolean{
+    public votarProducto(@Body() voto: any):Promise<boolean>{
         return this.productoService.votarProducto(voto);
     }
 }

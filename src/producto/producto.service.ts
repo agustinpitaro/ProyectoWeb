@@ -3,12 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Producto } from './producto.entity';
 import { Not, Repository } from 'typeorm';
 import { Biblioteca } from 'src/biblioteca/biblioteca.entity';
+import { Usuario } from 'src/users/users.entity';
 
 @Injectable()
 export class ProductoService {
     constructor(
         @InjectRepository(Biblioteca)
         private readonly bibliotecaRepository: Repository<Biblioteca>,
+        @InjectRepository(Usuario)
+        private readonly usuarioRepository: Repository<Usuario>,
         @InjectRepository(Producto)
         private readonly productoRepository: Repository<Producto>
     ) { }
@@ -67,25 +70,24 @@ export class ProductoService {
     }
 
 
-    public votarProducto(voto: any): boolean { //ESCRIBIR EN BIBLIOTECA
+    public async votarProducto(voto: any): Promise<boolean> { //ESCRIBIR EN BIBLIOTECA
 
-        let lineaBiblio = new Biblioteca(voto.producto, voto.username, voto.puntaje);
+        let usuario = await this.usuarioRepository.find({
+            where : [ {"username": voto.username}]});
+        let lineaBiblio = new Biblioteca(voto.producto, usuario[0].nro_usuario, voto.puntaje);
         this.bibliotecaRepository.save(lineaBiblio);
         return true;
     }
 
     public async getPuntaje(nro_producto: any): Promise<Number> { //LEER DE BIBLIOTECA
-        console.log(nro_producto);
         let promedio = 0;
         let productos = await this.bibliotecaRepository.find({
             where: [{
                 "nro_producto" : nro_producto
             }]});
-        console.log(productos);
         productos.forEach(p => {
             promedio = + p.getPuntaje();
         })
-        console.log(promedio / productos.length);
         return promedio / productos.length;
     }
 }

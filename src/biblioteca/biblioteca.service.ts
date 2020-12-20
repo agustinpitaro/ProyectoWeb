@@ -19,7 +19,6 @@ export class BibliotecaService {
     private async getFullProductos(biblioteca): Promise<Producto[]> {
         let salida : Producto[] = [];
         for(let i = 0; i<biblioteca.length; i++){
-            console.log(biblioteca[i]);
             let producto = await this.productoRepository.findOne(biblioteca[i].getNroProducto());
             salida.push(producto);
         }
