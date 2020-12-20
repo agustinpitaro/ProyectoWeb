@@ -22,9 +22,9 @@
 
 .product-item .product-container {
   text-align: left;
-  font: normal 14px sans-serif;
-  background-color: #ffffff;
-  border: 1px solid #dbe3e7;
+  font: normal 12px'Bungee Inline';
+  background-color: #222020;
+  border: 1px solid #7f05bd;
   border-radius: 3px;
   box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.08);
   padding: 25px;
@@ -81,7 +81,7 @@
 
 .product-item p.product-description {
   margin-top: 20px;
-  color: #5d5d5d;
+  color: #e4dede;
   line-height: 1.45;
   white-space: normal;
   margin-bottom: 20px;
@@ -122,7 +122,7 @@
 }
 
 .product-item .product-price {
-  color: #4e4e4e;
+  color: #962eeb;
   font-weight: bold;
   font-size: 20px;
   padding-top: 5px;
