@@ -10,10 +10,13 @@ buscador.addEventListener('keyup', function (e) {
         window.location.href = productPage;
     }
     else {
-        if (buscador.value.length > 3 && miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }) ) {
+        if (buscador.value.length > 0 && miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }) ) {
             debugger;
             predict.style.display = "block";
-            predict.style.color = "turquoise";
+            predict.style.backgroundColor = "rgb(78, 32, 100)"
+            predict.style.borderBottomLeftRadius = "10px";
+            predict.style.borderBottomRightRadius = "10px";
+            predict.style.color = "#28D7FE";
             let resultado = miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 })[0].titulo;
             predictLI.innerHTML = resultado;
         }
