@@ -76,6 +76,8 @@ function loadCatalogo(data) {
         let aTitulo = document.createElement('a');
         aTitulo.href = "product.html?id=" + producto.nro_producto;
         aTitulo.innerText = producto.titulo;
+        aTitulo.style.fontFamily ="Bungee Inline";
+        aTitulo.style.color = "#28D7FE";
 
         h2Titulo.appendChild(aTitulo);
         divColTitulo.appendChild(h2Titulo);
@@ -98,9 +100,10 @@ function loadCatalogo(data) {
         divColBoton.className = "col-auto";
 
         let buttonVer = document.createElement('a');
-        buttonVer.className = "btn btn-light";
+        buttonVer.className = "btn btn-info";
         buttonVer.role = "button";
         buttonVer.innerText = "+Mas info";
+        buttonVer.style.color = "purple";
         buttonVer.href = "product.html?id=" + producto.nro_producto;
 
         divColBoton.appendChild(buttonVer);

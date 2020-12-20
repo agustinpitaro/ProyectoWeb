@@ -797,7 +797,8 @@ height: 400px ;
 }
 
 .sombreado{
-  background-color: hsla(0, 0%, 0%, 0.61);
+  background-color: hsla(0, 0%, 0%, 0.856);
+  border-radius: 10px;
 }
 .product-list{
   border-color: rgb(78, 32, 100);

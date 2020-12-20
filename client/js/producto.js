@@ -13,6 +13,9 @@ function loadProducto(data) {
     fullImg.href = data[0].imagen;
     productImg.src = data[0].imagen;
     titulo.innerText = data[0].titulo;
+    titulo.style.color = "#28D7FE";
+    sinopsis.style.fontFamily = "sans serif";
+    sinopsis.style.fontSize = "20px";
     precio.innerText = "$ " + data[0].precio;
     sinopsis.innerHTML = data[0].sinopsis;
     puntaje.innerText = Math.round(rating) + "/10";
@@ -133,7 +136,7 @@ function checkPertenencia(biblioteca) {
             input.min = "1";
             input.max = "10";
             let button = document.createElement('button');
-            button.className = "btn btn-primary";
+            button.className = "btn btn-info";
             button.id = "puntaje-button";
             button.type = "button";
             button.innerText = "Votar!";

@@ -78,6 +78,8 @@ function loadBiblioteca(data) {
         let aTitulo = document.createElement('a');
         aTitulo.href = "product.html?id=" + producto.nro_producto;
         aTitulo.innerText = producto.titulo;
+        aTitulo.style.fontFamily ="Bungee Inline";
+        aTitulo.style.color = "#28D7FE";
 
         h2Titulo.appendChild(aTitulo);
         divColTitulo.appendChild(h2Titulo);
@@ -100,9 +102,10 @@ function loadBiblioteca(data) {
         divColBoton.className = "col-auto";
 
         let buttonVer = document.createElement('button');
-        buttonVer.className = "btn btn-light";
+        buttonVer.className = "btn btn-info";
         buttonVer.type = "button";
         buttonVer.innerText = "VER";
+        buttonVer.style.color = "purple";
         buttonVer.href = producto.link;
 
         divColBoton.appendChild(buttonVer);
