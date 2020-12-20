@@ -61,12 +61,13 @@ async function load() {
         }
         productoid = params["id"];
         productPage = /producto/ + productoid;
-        /*let response3 = await fetch("/producto/" + productoid + "/puntaje", {
+        debugger;
+        let response3 = await fetch("/producto/" + productoid + "/puntaje", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-        });*/
+        });
         rating = 0;//await response3.json();
         let response = await fetch(productPage, {
             method: 'GET',
@@ -196,19 +197,8 @@ async function cargarPuntaje(e) {
 
     }
 }
-function checkSession() {
-    if (window.sessionStorage.getItem('user')) {
-        let addtocart = document.getElementById('carrito-button');
-        addtocart.style.display = "block";//muestro el boton de compra
-        addtocart.innerText ="Agregar al Carrito";
-        
-    } else {
-        let addtocart = document.getElementById('carrito-button ');
-        addtocart.style.display = "none";//oculto el boton de compra
-    }
-}
+
 let biblioteca;
 let data;
 let rating;
 load();
-checkSession();
