@@ -24,7 +24,7 @@ function loadProducto(data) {
 }
 
 
-async function loadRelacionados(data) {
+function loadRelacionados(data) {
     let related = document.querySelectorAll("div.related");
     let indice = 1;
     related.forEach(item => {
@@ -43,6 +43,11 @@ async function loadRelacionados(data) {
         //Agrego sinopsis
         let itemDescription = item.querySelector("p.product-description");
         itemDescription.innerHTML = data[indice].sinopsis;
+        //Agrego enlace a productPage
+        let botonPagina = item.querySelector("button");
+        debugger;
+        botonPagina.innerText = "Visitar pagina";
+        botonPagina.addEventListener('click',function () { location.href= itemLink.href;});
         indice++;
     })
 
