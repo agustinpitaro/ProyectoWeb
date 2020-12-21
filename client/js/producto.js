@@ -73,7 +73,12 @@ async function load() {
                 'Content-Type': 'application/json',
             },
         });
-        rating = await response3.json();
+        if (response3){
+            rating = await response3.json();
+        }
+        else {
+            rating = 0;
+        }
         let response = await fetch(productPage, {
             method: 'GET',
             headers: {

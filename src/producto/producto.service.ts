@@ -92,6 +92,9 @@ export class ProductoService {
                 validos++;
             }
         }
+        if(productos.length == 0){
+            return 0;
+        }
         return promedio / validos;
     }
 }
