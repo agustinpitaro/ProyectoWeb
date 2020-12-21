@@ -64,13 +64,13 @@ DROP TABLE IF EXISTS `producto`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
   `nro_producto` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(45) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
   `sinopsis` varchar(500) NOT NULL,
   `imagen` varchar(200) NOT NULL,
   `precio` double NOT NULL,
   `genero` varchar(20) NOT NULL,
   `genero_secundario` varchar(20) NOT NULL,
-  `link` varchar(100) NOT NULL,
+  `link` varchar(200) NOT NULL,
   PRIMARY KEY (`nro_producto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
