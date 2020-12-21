@@ -14,8 +14,9 @@ async function validateLogin(e) {
     },
     body: JSON.stringify(user),
   });
-
-  if (await respuesta.json()) {
+  debugger;
+  let result = await respuesta.json();
+  if (result) {
     window.sessionStorage.setItem('userLogged', true);
     window.sessionStorage.setItem('user',  user.name);
     window.sessionStorage.removeItem('carrito');

@@ -10,14 +10,15 @@ export class LoginService {
     constructor(
         private usersService: UsersService,
         @InjectRepository(Usuario)
-        private readonly UsuarioRepository: Repository<Usuario>,
+        private readonly usuarioRepository: Repository<Usuario>,
     ) { }
 
     public async login(userInfo: any): Promise<boolean> {
-        let userLogged = new Usuario(userInfo.name, userInfo.password);
-        let result = await this.UsuarioRepository.findOne(userLogged);
-        if (result)
-            return true;
+        const bcrypt = require('bcrypt');
+        let usuario = await this.usuarioRepository.find({
+            where : [ {"username": userInfo.name}]});
+        if (usuario)
+            return bcrypt.compareSync(userInfo.password, usuario[0].getPassword());
         return false;
     }
 }

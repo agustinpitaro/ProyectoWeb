@@ -8,7 +8,7 @@ async function validateRegister(e) {
       name: document.getElementById('email').value,
       password: password1,
     };
-
+    debugger;
     let respuesta = await fetch('/register/singup', {
       method: 'POST',
       headers: {
