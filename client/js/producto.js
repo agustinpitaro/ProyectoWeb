@@ -160,7 +160,7 @@ function checkPertenencia(biblioteca) {
             botonPuntaje.addEventListener('click', cargarPuntaje);
 
             botonCarrito.innerText = "Ver";
-            botonCarrito.href = data[0].link;
+            botonCarrito.addEventListener('click',function () { location.href= data[0].link;});
 
             precioProducto = document.querySelector('div.price').style.display = 'none';
 
