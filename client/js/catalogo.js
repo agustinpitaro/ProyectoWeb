@@ -42,7 +42,6 @@ function loadCatalogo(data) {
     let indice = 0;
     data.forEach(producto => {
         //Creo estructura del producto
-        console.log(producto);
         let contenedor = document.createElement('div')
         contenedor.className = "col-sm-6 col-md-4 product-item";
 
@@ -123,7 +122,6 @@ function loadCatalogo(data) {
 }
 
 async function load() {
-    console.log("Funcion de carga catalogo");
     let response = await fetch(/catalogo/, {
         method: 'GET',
         headers: {
