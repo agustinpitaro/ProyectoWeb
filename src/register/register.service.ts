@@ -13,25 +13,15 @@ export class RegisterService {
 
     public async register(userInfo: any): Promise<boolean> {
         const bcrypt = require('bcrypt');
-        const saltRounds = 10;
-        let userRegister;
-       
+        const saltRounds = 10;     
         if (await this.usuarioRepository.findOne(userInfo.name)) {
             return false;
         }
-         bcrypt.hash(userInfo.password, saltRounds, function(err, hash) {
-            let asdas = super. guardarRepo( userRegister);
-             userRegister = new Usuario(userInfo.name, hash );
-             console.log(userRegister);
-            });
-           
-           
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(userInfo.password, salt);
+        let userRegister = new Usuario(userInfo.name, hash);
+        console.log(userRegister);
+        this.usuarioRepository.save(userRegister);
         return true;
     }
-    public async guardarRepo(user: Usuario):boolean{
-        this.usuarioRepository.save(user);
-        return true;
-    }
-
-
 }
