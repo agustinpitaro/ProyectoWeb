@@ -18,7 +18,7 @@ function loadProducto(data) {
     sinopsis.style.fontSize = "20px";
     precio.innerText = "$ " + data[0].precio;
     sinopsis.innerHTML = data[0].sinopsis;
-    puntaje.innerText = Math.round(rating) + "/10";
+    puntaje.innerText = Math.round(rating * 100)/100 + "/10";
     loadRelacionados(data);
 
 }

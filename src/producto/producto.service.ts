@@ -81,13 +81,17 @@ export class ProductoService {
 
     public async getPuntaje(nro_producto: any): Promise<Number> { //LEER DE BIBLIOTECA
         let promedio = 0;
+        let validos = 0;
         let productos = await this.bibliotecaRepository.find({
             where: [{
                 "nro_producto" : nro_producto
             }]});
-        productos.forEach(p => {
-            promedio = + p.getPuntaje();
-        })
-        return promedio / productos.length;
+        for(let i = 0; i<productos.length; i++){
+            if(productos[i].getPuntaje() != -1){
+                promedio = promedio + productos[i].getPuntaje();
+                validos++;
+            }
+        }
+        return promedio / validos;
     }
 }
