@@ -25,9 +25,9 @@ export class BibliotecaService {
         return salida;
     }
 
-    public async getProductosUser(id: any): Promise<Producto[]> {
+    public async getProductosUser(name: any): Promise<Producto[]> {
         try {
-            let usuario = await this.usuarioRepository.find({ where: [{ "username": id }] });
+            let usuario = await this.usuarioRepository.find({ where: [{ "username": name }] });
             let busqueda: Biblioteca[] = await this.bibliotecaRepository.find({
                 where: [
                     { "nro_usuario": usuario[0].getNroUsuario() },

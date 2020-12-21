@@ -8,7 +8,6 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class LoginService {
     constructor(
-        private usersService: UsersService,
         @InjectRepository(Usuario)
         private readonly usuarioRepository: Repository<Usuario>,
     ) { }
