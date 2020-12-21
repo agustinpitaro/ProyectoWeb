@@ -23,7 +23,7 @@ export class CarritoService {
         let usuario = await this.usersService.getByUsername(compra.username);
         for (let i in compra.compra) {
             let producto = await this.ProductoRepository.findOne(compra.compra[i]);
-            let linea = new Factura(usuario.getNroUsuario(), producto.getNroProducto(), "15/12/2020",
+            let linea = new Factura(usuario.getNroUsuario(), producto.getNroProducto(), "21/12/2020",
                 producto.getPrecio(), producto.getPrecio() * 0.21, producto.getPrecio() * 1.21);
             let propiedad = new Biblioteca(producto.getNroProducto(),usuario.getNroUsuario(),-1);
             this.FacturaRepository.save(linea);
