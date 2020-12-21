@@ -2,6 +2,8 @@ let logoutNavBar = document.getElementById('logout-navbar');
 logoutNavBar.addEventListener('click', logOut);
 
 
+
+
 function loadCarousel(data) {
     let carousel = document.querySelectorAll("div.carousel-item");
     let indice = 0;
@@ -42,9 +44,12 @@ function checkSession() {
         carritoNavBar.style.display = "block";//muestro boton carrito
         let bibliotecaNavBar = document.getElementById('biblioteca-navbar');
         bibliotecaNavBar.style.display = "block";//muestro boton biblioteca
+        let usuariologeado = document.getElementById('usuariologeado');
+        usuariologeado.innerText = window.sessionStorage.getItem('user');//muestro usuario logeado
     }
     else{
-   
+        let usuariologeado = document.getElementById('usuariologeado');
+        usuariologeado.style.display = "none";//oculto nombre de usuario
         let logoutNavBar = document.getElementById('logout-navbar');
         logoutNavBar.style.display = "none";//oculto boton logout
         let carritoNavBar = document.getElementById('carrito-navbar');
