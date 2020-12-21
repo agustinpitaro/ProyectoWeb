@@ -92,7 +92,9 @@ export class ProductoService {
                 validos++;
             }
         }
-        if(productos.length == 0){
+        console.log(promedio);
+        if(productos.length == 0 || promedio <= 0 ){
+            console.log("sin puntajes");
             return 0;
         }
         return promedio / validos;
