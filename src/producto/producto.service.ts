@@ -18,7 +18,6 @@ export class ProductoService {
 
 
     private async getById(id: number): Promise<Producto> {
-        console.log("Getting Product id: " + id);
         try {
             let producto: Producto = await this.productoRepository.findOne(id);
             if (producto) {
@@ -92,9 +91,7 @@ export class ProductoService {
                 validos++;
             }
         }
-        console.log(promedio);
         if(productos.length == 0 || promedio <= 0 ){
-            console.log("sin puntajes");
             return 0;
         }
         return promedio / validos;

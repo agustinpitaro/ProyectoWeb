@@ -56,7 +56,6 @@ function loadRelacionados(data) {
 async function load() {
     let dueno = window.sessionStorage.getItem('user');
     if (dueno) {
-        console.log("Funcion de carga producto");
         let paramstr = window.location.search.substr(1);
         let paramarr = paramstr.split("&");
         let params = [];
@@ -103,7 +102,6 @@ async function load() {
     }
     else {
         botonCarrito.style.display = 'none';
-        console.log("Funcion de carga producto");
         let paramstr = window.location.search.substr(1);
         let paramarr = paramstr.split("&");
         let params = [];

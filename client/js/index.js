@@ -6,11 +6,10 @@ function loadRecientes(data) {
     let lista = document.getElementById('recientes');
     data.forEach(producto => {
         //Creo estructura del producto
-        console.log(producto);
-        let contenedor = document.createElement('div')
+        let contenedor = document.createElement('div');
         contenedor.className = "col-sm-6 col-md-4 product-item";
 
-        let contenedor2 = document.createElement('div')
+        let contenedor2 = document.createElement('div');
         contenedor.className = "product-container";
         
         //div de la imagen
@@ -99,8 +98,7 @@ function loadPopulares(data) {
     let lista = document.getElementById('populares');
     data.forEach(producto => {
         //Creo estructura del producto
-        console.log(producto);
-        let contenedor = document.createElement('div')
+        let contenedor = document.createElement('div');
         contenedor.className = "col-auto col-lg-auto col-xl-auto product-item";
 
         let contenedor2 = document.createElement('div')
@@ -189,7 +187,6 @@ function loadPopulares(data) {
 }
 
 async function load() {
-    console.log("Funcion de carga index");
     let responseRecientes = await fetch('/index/recientes', {
         method: 'GET',
         headers: {
