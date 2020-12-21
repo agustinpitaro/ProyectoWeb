@@ -52,7 +52,7 @@ CREATE TABLE `factura` (
   KEY `nro_producto` (`nro_producto`),
   CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`nro_producto`) REFERENCES `producto` (`nro_producto`),
   CONSTRAINT `FK_FACTURA_USUARIO` FOREIGN KEY (`nro_usuario`) REFERENCES `usuario` (`nro_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,15 +64,15 @@ DROP TABLE IF EXISTS `producto`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
   `nro_producto` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(50) NOT NULL,
-  `sinopsis` varchar(500) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `sinopsis` varchar(800) NOT NULL,
   `imagen` varchar(200) NOT NULL,
   `precio` double NOT NULL,
   `genero` varchar(20) NOT NULL,
   `genero_secundario` varchar(20) NOT NULL,
   `link` varchar(200) NOT NULL,
   PRIMARY KEY (`nro_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +87,7 @@ CREATE TABLE `usuario` (
   `username` varchar(40) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`nro_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
