@@ -12,13 +12,26 @@ export class RegisterService {
     ) { }
 
     public async register(userInfo: any): Promise<boolean> {
-
-        let userRegister = new Usuario(userInfo.name, userInfo.password );
+        const bcrypt = require('bcrypt');
+        const saltRounds = 10;
+        let userRegister;
+       
         if (await this.usuarioRepository.findOne(userInfo.name)) {
             return false;
         }
-        this.usuarioRepository.save(userRegister);
+         bcrypt.hash(userInfo.password, saltRounds, function(err, hash) {
+            let asdas = super. guardarRepo( userRegister);
+             userRegister = new Usuario(userInfo.name, hash );
+             console.log(userRegister);
+            });
+           
+           
         return true;
     }
+    public async guardarRepo(user: Usuario):boolean{
+        this.usuarioRepository.save(user);
+        return true;
+    }
+
 
 }

@@ -906,3 +906,8 @@ div div{
     color: #28D7FE;
   }
 }
+@media (min-width:940 px){
+  .mediaquery{
+    margin-right: -100px !important;
+  }
+}
