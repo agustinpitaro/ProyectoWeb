@@ -106,7 +106,7 @@ function loadBiblioteca(data) {
         buttonVer.type = "button";
         buttonVer.innerText = "VER";
         buttonVer.style.color = "purple";
-        buttonVer.href = producto.link;
+        buttonVer.addEventListener('click',function () { location.href= producto.link;});
 
         divColBoton.appendChild(buttonVer);
         divRowBoton.appendChild(divColBoton);
