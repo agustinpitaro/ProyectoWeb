@@ -13,6 +13,7 @@ buscador.addEventListener('keyup', function (e) {
         if (buscador.value.length > 0 && miniSearch.search(miniSearch.autoSuggest(e.target.value)[0].suggestion, { fuzzy: 0.2 }) ) {
             debugger;
             predict.style.display = "block";
+            predict.style.maxWidth = "180px";
             predict.style.backgroundColor = "rgb(78, 32, 100)"
             predict.style.borderBottomLeftRadius = "10px";
             predict.style.borderBottomRightRadius = "10px";
