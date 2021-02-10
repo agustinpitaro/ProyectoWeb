@@ -888,10 +888,10 @@ div div{
 }
 
 .cat{
-  animation: cat 3s linear infinite;
-  -moz-animation: cat 3s linear infinite;
-  -webkit-animation: cat 3s linear infinite;
-  -o-animation: cat 3s linear infinite;
+  animation: cat 2s linear infinite;
+  -moz-animation: cat 2s linear infinite;
+  -webkit-animation: cat 2s linear infinite;
+  -o-animation: cat 2s linear infinite;
 }
 
 @keyframes cat {
